@@ -3,3 +3,6 @@
 -- Add any additional options here
 
 vim.opt.scrolloff = 12
+
+-- hide invisible characters (tabs, etc.)
+vim.opt.list = false
