@@ -43,6 +43,18 @@ return {
           end
         end, { "i", "s" }),
       })
+
+      -- don't select the first item by default
+      opts.preselect = cmp.PreselectMode.None
+      opts.completion = {
+        completeopt = "menu,menuone,noinsert,noselect",
+      }
+
+      -- add borders to the completion window
+      opts.window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      }
     end,
   },
 }
