@@ -9,3 +9,8 @@ vim.opt.list = false
 
 -- fix nvim-cmp transparency
 vim.opt.pumblend = 0
+
+-- add border to diagnostic window
+vim.diagnostic.config({
+  float = { border = "rounded" },
+})
