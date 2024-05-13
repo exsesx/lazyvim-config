@@ -3,3 +3,8 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })
+
+-- Muscle memory, sorry
+vim.keymap.set({ "n", "v" }, "<leader>lf", function()
+  LazyVim.format({ force = true })
+end, { desc = "Format" })
