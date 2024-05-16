@@ -3,6 +3,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = false,
     priority = 1000,
     opts = {
       flavour = "mocha",
@@ -17,7 +18,7 @@ return {
         headlines = true,
         illuminate = true,
         indent_blankline = { enabled = true },
-        leap = true,
+        -- leap = true,
         lsp_trouble = true,
         mason = true,
         markdown = true,
@@ -31,7 +32,7 @@ return {
             information = { "undercurl" },
           },
         },
-        navic = { enabled = true, custom_bg = "lualine" },
+        -- navic = { enabled = true, custom_bg = "lualine" },
         neotest = true,
         neotree = true,
         noice = true,
@@ -51,6 +52,14 @@ return {
       options = {
         section_separators = { left = "", right = "" },
         component_separators = "",
+      },
+      sections = {
+        lualine_y = {
+          { "progress" },
+        },
+        lualine_z = {
+          { "location" },
+        },
       },
     },
   },

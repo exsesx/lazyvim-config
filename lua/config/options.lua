@@ -14,3 +14,6 @@ vim.opt.pumblend = 0
 vim.diagnostic.config({
   float = { border = "rounded" },
 })
+
+-- remove "~" chars
+vim.opt.fillchars = { eob = " " }
