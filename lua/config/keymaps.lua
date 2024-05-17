@@ -23,7 +23,7 @@ vim.keymap.set(
   "n",
   "<leader>gb",
   ":Telescope git_branches<CR>",
-  { silent = true, noremap = true, "Telescope Git Branches" }
+  { silent = true, noremap = true, desc = "Telescope Git Branches" }
 )
 vim.keymap.set("n", "<leader>gB", ":G blame_line<CR>", { silent = true, noremap = true, desc = "Blame Line" })
 
