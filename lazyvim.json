@@ -12,10 +12,13 @@
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
-    "lazyvim.plugins.extras.editor.aerial"
+    "lazyvim.plugins.extras.ui.treesitter-context",
+    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.editor.illuminate"
   ],
   "news": {
-    "NEWS.md": "4578"
+    "NEWS.md": "4828"
   },
   "version": 3
 }
+

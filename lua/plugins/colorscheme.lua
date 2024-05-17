@@ -16,7 +16,10 @@ return {
         flash = true,
         gitsigns = true,
         headlines = true,
-        illuminate = true,
+        illuminate = {
+          enabled = true,
+          lsp = false,
+        },
         indent_blankline = { enabled = true },
         lsp_trouble = true,
         mason = true,
@@ -24,13 +27,24 @@ return {
         mini = true,
         native_lsp = {
           enabled = true,
+          virtual_text = {
+            errors = { "italic" },
+            hints = { "italic" },
+            warnings = { "italic" },
+            information = { "italic" },
+          },
           underlines = {
             errors = { "undercurl" },
             hints = { "undercurl" },
             warnings = { "undercurl" },
             information = { "undercurl" },
           },
+          inlay_hints = {
+            background = true,
+          },
         },
+        diffview = true,
+        harpoon = true,
         neogit = true,
         neotest = true,
         neotree = true,
@@ -51,6 +65,7 @@ return {
       options = {
         section_separators = { left = "", right = "" },
         component_separators = "",
+        theme = "catppuccin",
       },
       sections = {
         lualine_y = {
