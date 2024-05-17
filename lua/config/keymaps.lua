@@ -30,3 +30,10 @@ vim.keymap.set("n", "<leader>gB", ":G blame<CR>", { silent = true, noremap = tru
 -- LazyVim
 vim.keymap.del("n", "<leader>l")
 vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "Lazy" })
+
+-- Telescope
+vim.keymap.del("n", "<leader><space>")
+vim.keymap.set("n", "<leader><space>", LazyVim.telescope("files", { cwd = false }), { desc = "Find Files (cwd)" })
+
+-- LSP
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })

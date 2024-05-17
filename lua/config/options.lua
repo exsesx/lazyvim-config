@@ -17,3 +17,6 @@ vim.diagnostic.config({
 
 -- remove "~" chars
 vim.opt.fillchars = { eob = " " }
+
+-- completions
+vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }

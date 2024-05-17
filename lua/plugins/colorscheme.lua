@@ -33,6 +33,7 @@ return {
           },
         },
         -- navic = { enabled = true, custom_bg = "lualine" },
+        neogit = true,
         neotest = true,
         neotree = true,
         noice = true,
