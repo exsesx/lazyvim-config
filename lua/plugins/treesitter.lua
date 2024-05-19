@@ -114,6 +114,10 @@ return {
             },
           },
         },
+        matchup = {
+          enable = true,
+          disable_virtual_text = true,
+        },
       })
 
       local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")

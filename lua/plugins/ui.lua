@@ -1,5 +1,50 @@
 -- https://www.lazyvim.org/plugins/colorscheme
+
+-- TODO: Make it smart, perhaps to unload unused plugins, etc.
+local current_colorscheme = "catppuccin" -- or catppuccin
+
 return {
+  -- Gruvbox setup start
+  {
+    "sainnhe/gruvbox-material",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.gruvbox_material_transparent_background = 2
+      vim.g.gruvbox_material_better_performance = 1
+      vim.g.gruvbox_material_float_style = "dim"
+      vim.g.gruvbox_material_current_word = "grey background"
+    end,
+  },
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false,
+    config = function()
+      require("transparent").setup({
+        extra_groups = {
+          "NormalFloat",
+          "FloatBorder",
+          "FloatTitle",
+        },
+        exclude_groups = {},
+      })
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    opts = {
+      views = {
+        mini = {
+          win_options = {
+            winblend = 0,
+          },
+        },
+      },
+    },
+  },
+  -- Gruvbox setup end
+
+  -- Catppuccin setup start
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -58,6 +103,7 @@ return {
       },
     },
   },
+  -- Catppuccin setup end
 
   {
     "nvim-lualine/lualine.nvim",
@@ -65,7 +111,7 @@ return {
       options = {
         section_separators = { left = "", right = "" },
         component_separators = "",
-        theme = "catppuccin",
+        theme = current_colorscheme,
       },
       sections = {
         lualine_y = {
@@ -81,7 +127,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = current_colorscheme,
     },
   },
 }

@@ -7,6 +7,9 @@ return {
     -- tl;dr versions >1.4 forbid to setup empty groups (like the ones below)
     version = "1.4",
     opts = {
+      triggers_blacklist = {
+        n = { "v" },
+      },
       defaults = {
         ["<leader>l"] = { name = "+lsp/lazy" },
         ["<leader>gh"] = { name = "+hunks" },
