@@ -1,5 +1,6 @@
 return {
   {
+    -- https://github.com/LazyVim/LazyVim/blob/b0128b60bffd0d6a97ddd99af6179ebcd8a5096f/lua/lazyvim/plugins/editor.lua#L375
     "lewis6991/gitsigns.nvim",
     event = "LazyFile",
     opts = {

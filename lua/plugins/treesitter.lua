@@ -6,6 +6,7 @@ return {
         { "]x", desc = "Increment Selection" },
         { "[x", desc = "Decrement Selection", mode = "x" },
       },
+      indent = { enable = false },
       incremental_selection = {
         enable = true,
         keymaps = {
