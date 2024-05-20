@@ -15,11 +15,11 @@
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.ui.treesitter-context",
-    "lazyvim.plugins.extras.editor.trouble-v3"
+    "lazyvim.plugins.extras.editor.trouble-v3",
+    "lazyvim.plugins.extras.editor.navic"
   ],
   "news": {
     "NEWS.md": "4964"
   },
   "version": 4
 }
-

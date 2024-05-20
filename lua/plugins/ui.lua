@@ -25,6 +25,12 @@ return {
           "NormalFloat",
           "FloatBorder",
           "FloatTitle",
+
+          -- neogit transparency
+          "NeogitDiffHeader",
+          "NeogitDiffHeader",
+          "NeogitDiffContextHighlight",
+          "NeogitDiffContext",
         },
         exclude_groups = {},
       })
@@ -100,6 +106,7 @@ return {
         treesitter = true,
         treesitter_context = true,
         which_key = true,
+        navic = true,
       },
     },
   },

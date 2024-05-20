@@ -42,3 +42,10 @@ vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diag
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
   LazyVim.format({ force = true })
 end, { desc = "Format" })
+
+-- Treesitter
+if LazyVim.has("nvim-treesitter-context") then
+  vim.keymap.set("n", "[u", function()
+    require("treesitter-context").go_to_context(vim.v.count1)
+  end, { silent = true, desc = "Up Treesitter Context" })
+end

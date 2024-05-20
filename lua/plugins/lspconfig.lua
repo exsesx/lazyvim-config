@@ -6,6 +6,9 @@ return {
     end,
     opts = {
       servers = {
+        graphql = {
+          filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
+        },
         lua_ls = {
           settings = {
             Lua = {
