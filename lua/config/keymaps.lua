@@ -4,7 +4,11 @@
 
 vim.keymap.set("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })
 
--- Neogit remaps
+-- Remove lazygit keymaps
+vim.keymap.del("n", "<leader>gg")
+vim.keymap.del("n", "<leader>gG")
+
+-- Neogit keymaps
 local neogit = require("neogit")
 
 vim.keymap.del("n", "<leader>gs")
@@ -16,8 +20,8 @@ vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", { silent = true, noremap
 vim.keymap.set("n", "<leader>gp", ":Neogit pull<CR>", { silent = true, noremap = true, desc = "Neogit Pull" })
 vim.keymap.set("n", "<leader>gP", ":Neogit push<CR>", { silent = true, noremap = true, desc = "Neogit Push" })
 
-vim.keymap.del("n", "<leader>gb")
-vim.keymap.set("n", "<leader>gw", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
+vim.keymap.del("n", "<leader>gb") -- remove git blame line
+vim.keymap.set("n", "<leader>gW", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" }) -- reassign
 
 vim.keymap.set(
   "n",
@@ -25,16 +29,15 @@ vim.keymap.set(
   ":Telescope git_branches<CR>",
   { silent = true, noremap = true, desc = "Telescope Git Branches" }
 )
-vim.keymap.set("n", "<leader>gB", ":G blame_line<CR>", { silent = true, noremap = true, desc = "Blame Line" })
+vim.keymap.set("n", "<leader>gw", ":G blame_line<CR>", { silent = true, noremap = true, desc = "Blame Line" })
 
 -- LazyVim
 vim.keymap.del("n", "<leader>l")
 vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "Lazy" })
 
 -- Telescope
-vim.keymap.del("n", "<leader><space>")
-vim.keymap.set("n", "<leader><space>", LazyVim.telescope("files", { cwd = false }), { desc = "Find Files (cwd)" })
-vim.keymap.set("n", "<leader>fs", LazyVim.telescope("git_status", { cwd = false }), { desc = "Find Git Status (cwd)" })
+-- vim.keymap.set("n", "<leader>fs", LazyVim.telescope("git_status", { cwd = false }), { desc = "Find Git Status (cwd)" })
+vim.keymap.set("n", "<leader>fs", LazyVim.telescope("lsp_document_symbols"), { desc = "Find Document Symbols" })
 
 -- LSP
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
@@ -42,6 +45,7 @@ vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diag
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
   LazyVim.format({ force = true })
 end, { desc = "Format" })
+vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 
 -- Treesitter
 if LazyVim.has("nvim-treesitter-context") then

@@ -9,7 +9,11 @@ return {
       views = {
         hover = {
           border = { style = "rounded" },
-          position = { row = 2, col = 0 },
+        },
+        mini = {
+          win_options = {
+            winblend = 0,
+          },
         },
       },
       lsp = {
@@ -17,6 +21,11 @@ return {
           -- Set not show a message if hover is not available
           -- ex: shift+k on Typescript code
           silent = true,
+        },
+        signature = {
+          auto_open = {
+            enabled = false,
+          },
         },
       },
     },

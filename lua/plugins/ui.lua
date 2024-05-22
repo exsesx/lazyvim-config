@@ -1,56 +1,8 @@
 -- https://www.lazyvim.org/plugins/colorscheme
 
--- TODO: Make it smart, perhaps to unload unused plugins, etc.
 local current_colorscheme = "catppuccin" -- or catppuccin
 
 return {
-  -- Gruvbox setup start
-  {
-    "sainnhe/gruvbox-material",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_material_transparent_background = 2
-      vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_float_style = "dim"
-      vim.g.gruvbox_material_current_word = "grey background"
-    end,
-  },
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-    config = function()
-      require("transparent").setup({
-        extra_groups = {
-          "NormalFloat",
-          "FloatBorder",
-          "FloatTitle",
-
-          -- neogit transparency
-          "NeogitDiffHeader",
-          "NeogitDiffHeader",
-          "NeogitDiffContextHighlight",
-          "NeogitDiffContext",
-        },
-        exclude_groups = {},
-      })
-    end,
-  },
-  {
-    "folke/noice.nvim",
-    opts = {
-      views = {
-        mini = {
-          win_options = {
-            winblend = 0,
-          },
-        },
-      },
-    },
-  },
-  -- Gruvbox setup end
-
-  -- Catppuccin setup start
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -63,6 +15,8 @@ return {
         aerial = true,
         alpha = true,
         cmp = true,
+        dap = true,
+        dap_ui = true,
         dashboard = true,
         flash = true,
         gitsigns = true,
@@ -72,45 +26,39 @@ return {
           lsp = false,
         },
         indent_blankline = { enabled = true },
+        leap = true,
         lsp_trouble = true,
         mason = true,
         markdown = true,
         mini = true,
         native_lsp = {
           enabled = true,
-          virtual_text = {
-            errors = { "italic" },
-            hints = { "italic" },
-            warnings = { "italic" },
-            information = { "italic" },
-          },
           underlines = {
             errors = { "undercurl" },
             hints = { "undercurl" },
             warnings = { "undercurl" },
             information = { "undercurl" },
           },
-          inlay_hints = {
-            background = true,
-          },
         },
         diffview = true,
         harpoon = true,
         neogit = true,
+        navic = { enabled = true, custom_bg = "lualine" },
         neotest = true,
         neotree = true,
         noice = true,
         notify = true,
         semantic_tokens = true,
-        telescope = true,
+        telescope = {
+          enabled = true,
+          style = "nvchad",
+        },
         treesitter = true,
         treesitter_context = true,
         which_key = true,
-        navic = true,
       },
     },
   },
-  -- Catppuccin setup end
 
   {
     "nvim-lualine/lualine.nvim",

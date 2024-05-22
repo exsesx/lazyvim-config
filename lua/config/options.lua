@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.opt.scrolloff = 12
+vim.opt.scrolloff = 16
 
 -- hide invisible characters (tabs, etc.)
 vim.opt.list = false
@@ -18,5 +18,8 @@ vim.diagnostic.config({
 -- remove "~" chars
 vim.opt.fillchars = { eob = " " }
 
+-- set material style
+vim.g.material_style = "darker"
+
 -- completions
-vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
+-- vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
