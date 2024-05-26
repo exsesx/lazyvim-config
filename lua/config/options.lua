@@ -15,11 +15,6 @@ vim.diagnostic.config({
   float = { border = "rounded" },
 })
 
--- remove "~" chars
-vim.opt.fillchars = { eob = " " }
-
--- set material style
-vim.g.material_style = "darker"
-
 -- completions
--- vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
+vim.opt.completeopt = { "menu", "menuone", "noinsert" }
+vim.opt.shortmess:append("c")

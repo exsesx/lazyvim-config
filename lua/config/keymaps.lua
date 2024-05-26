@@ -2,13 +2,14 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- NOTE: Tree
 vim.keymap.set("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })
 
--- Remove lazygit keymaps
+-- NOTE: Remove lazygit keymaps
 vim.keymap.del("n", "<leader>gg")
 vim.keymap.del("n", "<leader>gG")
 
--- Neogit keymaps
+-- NOTE: Neogit keymaps
 local neogit = require("neogit")
 
 vim.keymap.del("n", "<leader>gs")
@@ -23,23 +24,29 @@ vim.keymap.set("n", "<leader>gP", ":Neogit push<CR>", { silent = true, noremap =
 vim.keymap.del("n", "<leader>gb") -- remove git blame line
 vim.keymap.set("n", "<leader>gW", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" }) -- reassign
 
+vim.keymap.set("n", "<leader>gw", ":G blame_line<CR>", { silent = true, noremap = true, desc = "Blame Line" })
+
+-- NOTE: LazyVim
+vim.keymap.del("n", "<leader>l")
+vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "Lazy" })
+
+-- NOTE: Telescope
+-- vim.keymap.set("n", "<leader>fs", LazyVim.telescope("git_status", { cwd = false }), { desc = "Find Git Status (cwd)" })
 vim.keymap.set(
   "n",
   "<leader>gb",
   ":Telescope git_branches<CR>",
   { silent = true, noremap = true, desc = "Telescope Git Branches" }
 )
-vim.keymap.set("n", "<leader>gw", ":G blame_line<CR>", { silent = true, noremap = true, desc = "Blame Line" })
-
--- LazyVim
-vim.keymap.del("n", "<leader>l")
-vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "Lazy" })
-
--- Telescope
--- vim.keymap.set("n", "<leader>fs", LazyVim.telescope("git_status", { cwd = false }), { desc = "Find Git Status (cwd)" })
 vim.keymap.set("n", "<leader>fs", LazyVim.telescope("lsp_document_symbols"), { desc = "Find Document Symbols" })
+vim.keymap.set(
+  "n",
+  "<leader>fm",
+  LazyVim.telescope("lsp_document_symbols", { symbols = "method" }),
+  { desc = "Find Document Methods" }
+)
 
--- LSP
+-- NOTE: LSP
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 -- Muscle memory, sorry
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
@@ -47,7 +54,7 @@ vim.keymap.set({ "n", "v" }, "<leader>lf", function()
 end, { desc = "Format" })
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 
--- Treesitter
+-- NOTE: Treesitter
 if LazyVim.has("nvim-treesitter-context") then
   vim.keymap.set("n", "[u", function()
     require("treesitter-context").go_to_context(vim.v.count1)

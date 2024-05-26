@@ -8,9 +8,14 @@ return {
       -- FIXME: Limit width (especially in Rust)
       -- For now this looks awful when the types are long, etc.
 
-      opts.preselect = cmp.PreselectMode.None
+      opts.preselect = cmp.PreselectMode.Item
       opts.completion = {
-        completeopt = "menu,menuone,noinsert,noselect",
+        completeopt = "menu,menuone,noinsert",
+      }
+
+      -- Annoying at times
+      opts.experimental = {
+        ghost_text = false,
       }
 
       opts.window = {
