@@ -18,3 +18,7 @@ vim.diagnostic.config({
 -- completions
 vim.opt.completeopt = { "menu", "menuone", "noinsert" }
 vim.opt.shortmess:append("c")
+
+-- vim-visual-multi tweaks
+vim.g.VM_set_statusline = 0 -- disable VM's statusline updates to prevent clobbering
+vim.g.VM_silent_exit = 1 -- because the status line already tells me the mode

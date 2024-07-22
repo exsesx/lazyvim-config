@@ -18,11 +18,18 @@ return {
             },
           },
         },
-        tsserver = {
-          init_options = {
-            preferences = {
-              disableSuggestions = true,
-            },
+        -- TODO: vtsls - remove annoying "File is a CommonJS module; it may be converted to an ES module" inspection
+        cssls = {
+          settings = {
+            css = { validate = true, lint = {
+              unknownAtRules = "ignore",
+            } },
+            scss = { validate = true, lint = {
+              unknownAtRules = "ignore",
+            } },
+            less = { validate = true, lint = {
+              unknownAtRules = "ignore",
+            } },
           },
         },
         emmet_language_server = {

@@ -17,3 +17,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
   end,
 })
+
+-- NOTE: Tmux reset cursor shape workaround
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+  command = "set guicursor=a:ver1-blinkon0",
+})

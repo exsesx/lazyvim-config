@@ -10,6 +10,15 @@ return {
       "nvim-telescope/telescope.nvim", -- optional
       -- "ibhagwan/fzf-lua", -- optional
     },
-    config = true,
+    opts = {
+      use_default_keymaps = true,
+      integrations = {
+        diffview = true,
+      },
+      commit_editor = {
+        show_staged_diff = false,
+        staged_diff_split_kind = "split",
+      },
+    },
   },
 }
