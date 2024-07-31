@@ -17,8 +17,18 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
+  ui = {
+    border = "double",
+    size = {
+      width = 0.8,
+      height = 0.8,
+    },
+  },
   install = { colorscheme = { "tokyonight" } },
-  checker = { enabled = false },
+  checker = { enabled = true, notify = false },
+  change_detection = {
+    notify = false,
+  },
   performance = {
     rtp = {
       disabled_plugins = {

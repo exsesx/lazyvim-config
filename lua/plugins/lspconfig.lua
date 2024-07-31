@@ -18,7 +18,21 @@ return {
             },
           },
         },
-        -- TODO: vtsls - remove annoying "File is a CommonJS module; it may be converted to an ES module" inspection
+        vtsls = {
+          settings = {
+            javascript = {
+              -- removes annoying "File is a CommonJS module; it may be converted to an ES module" inspection
+              suggestionActions = {
+                enabled = false,
+              },
+            },
+            -- typescript = {
+            --   suggestionActions = {
+            --     enabled = false,
+            --   },
+            -- },
+          },
+        },
         cssls = {
           settings = {
             css = { validate = true, lint = {

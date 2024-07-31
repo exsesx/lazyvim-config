@@ -2,25 +2,18 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
+      -- Messes with tsx/jsx HTML tags indentation
       indent = { enable = false },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "]x",
-          node_incremental = "]x",
-          scope_incremental = false,
-          node_decremental = "[x",
-        },
-      },
     },
   },
-  -- TODO: Enable later
+  -- TODO: Enable later?
+  -- Disabled in favor of mini.ai
   -- {
-  --   -- Inspired by https://www.youtube.com/watch?v=CEMPq_r8UYQ
+  --   --   -- Inspired by https://www.youtube.com/watch?v=CEMPq_r8UYQ
+  --   --   -- https://github.com/josean-dev/dev-environment-files/blob/main/.config/nvim/lua/josean/plugins/nvim-treesitter-text-objects.lua
   --   "nvim-treesitter/nvim-treesitter-textobjects",
   --   lazy = true,
   --   config = function()
-  --     ---@diagnostic disable: missing-fields
   --     require("nvim-treesitter.configs").setup({
   --       textobjects = {
   --         select = {
@@ -33,16 +26,14 @@ return {
   --             -- You can use the capture groups defined in textobjects.scm
   --             ["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
   --             ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
-  --
-  --             -- FIXME: messing with visual mode bit (slowing down)
   --             -- ["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
   --             -- ["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
   --
   --             -- works for javascript/typescript files (custom capture I created in after/queries/ecma/textobjects.scm)
   --             ["a:"] = { query = "@property.outer", desc = "Select outer part of an object property" },
   --             ["i:"] = { query = "@property.inner", desc = "Select inner part of an object property" },
-  --             ["l:"] = { query = "@property.lhs", desc = "Select left part of an object property" },
-  --             ["r:"] = { query = "@property.rhs", desc = "Select right part of an object property" },
+  --             -- ["l:"] = { query = "@property.lhs", desc = "Select left part of an object property" },
+  --             -- ["r:"] = { query = "@property.rhs", desc = "Select right part of an object property" },
   --
   --             ["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
   --             ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
@@ -82,8 +73,7 @@ return {
   --           goto_next_start = {
   --             ["]f"] = { query = "@call.outer", desc = "Next function call start" },
   --             ["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
-  --             -- FIXME: Messing with diffview (next/prev change)
-  --             -- ["]c"] = { query = "@class.outer", desc = "Next class start" },
+  --             ["]c"] = { query = "@class.outer", desc = "Next class start" },
   --             ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
   --             ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
   --
@@ -102,8 +92,7 @@ return {
   --           goto_previous_start = {
   --             ["[f"] = { query = "@call.outer", desc = "Prev function call start" },
   --             ["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
-  --             -- FIXME: Messing with diffview (next/prev change)
-  --             -- ["[c"] = { query = "@class.outer", desc = "Prev class start" },
+  --             ["[c"] = { query = "@class.outer", desc = "Prev class start" },
   --             ["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
   --             ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
   --           },
@@ -115,10 +104,6 @@ return {
   --             ["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
   --           },
   --         },
-  --       },
-  --       matchup = {
-  --         enable = true,
-  --         disable_virtual_text = true,
   --       },
   --     })
   --
