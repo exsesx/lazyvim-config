@@ -4,7 +4,7 @@ return {
     opts = {
       options = {
         indicator = {
-          style = "hell no",
+          style = "none",
         },
         show_buffer_close_icons = false,
         show_close_icon = false,

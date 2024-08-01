@@ -2,7 +2,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     opts = {
-      -- Use my FZF_DEFAULT_OPTS
+      -- Set to false to use my FZF_DEFAULT_OPTS
       fzf_colors = false,
 
       -- NOTE: Removes the header line with actions descriptions

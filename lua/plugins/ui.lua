@@ -84,6 +84,9 @@ return {
         -- hl.VertSplit = { fg = colors.none, bg = colors.none }
         -- hl.WinSeparator = { fg = colors.bg, bg = colors.none }
         -- hl.FloatBorder = { fg = colors.none, bg = colors.none }
+
+        -- fixes weird red color (ansi brown?) while searching in fzf (live grep)
+        hl.FzfLuaLiveSym = { link = "FzfLuaFzfMatch" }
       end,
       plugins = {
         auto = true,

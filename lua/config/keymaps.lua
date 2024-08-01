@@ -45,11 +45,16 @@ vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 
 -- NOTE: Treesitter Context
 
+-- x for conteXt
 if LazyVim.has("nvim-treesitter-context") then
-  vim.keymap.set("n", "[u", function()
+  vim.keymap.set("n", "[x", function()
     require("treesitter-context").go_to_context(vim.v.count1)
   end, { silent = true, desc = "Up Treesitter Context" })
 end
+
+-- NOTE: Oil
+vim.keymap.set("n", "<leader>fo", "<Cmd>Oil<CR>", { desc = "Oil" })
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
 
 -- https://stackoverflow.com/questions/16134457/insert-a-newline-without-entering-in-insert-mode-vim
 -- Questionable really :thinking:
