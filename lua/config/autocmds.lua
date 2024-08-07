@@ -30,3 +30,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.diagnostic.enable(false, { bufnr = args.buf })
   end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    if vim.api.nvim_get_option_value("diff", { scope = "local" }) then
+      vim.opt.cursorlineopt = "number"
+    else
+      vim.opt.cursorlineopt = "both"
+    end
+  end,
+})
