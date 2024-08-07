@@ -22,3 +22,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
   command = "set guicursor=a:ver1-blinkon0",
 })
+
+-- HACK: Disable bashls diagnostics for .env files
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = ".env",
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})

@@ -41,7 +41,12 @@ vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diag
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
   LazyVim.format({ force = true })
 end, { desc = "Format" })
-vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+
+-- vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+vim.keymap.set("n", "<leader>lr", function()
+  local inc_rename = require("inc_rename")
+  return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+end, { desc = "Rename (inc-rename.nvim)", expr = true })
 
 -- NOTE: Treesitter Context
 
@@ -55,6 +60,9 @@ end
 -- NOTE: Oil
 vim.keymap.set("n", "<leader>fo", "<Cmd>Oil<CR>", { desc = "Oil" })
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
+
+-- NOTE: Fugitive
+vim.keymap.set("n", "<leader>gt", "<CMD>tab Git<CR>", { desc = "Open Git Fugitive" })
 
 -- https://stackoverflow.com/questions/16134457/insert-a-newline-without-entering-in-insert-mode-vim
 -- Questionable really :thinking:

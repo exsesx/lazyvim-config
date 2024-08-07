@@ -26,11 +26,20 @@ return {
                 enabled = false,
               },
             },
-            -- typescript = {
-            --   suggestionActions = {
-            --     enabled = false,
-            --   },
-            -- },
+            typescript = {
+              suggestionActions = {
+                enabled = false,
+              },
+              -- https://github.com/yioneko/vtsls/blob/33ab3a11a5fcb3038d10d4f47d91655683b21dbc/packages/service/configuration.schema.json
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = "all" },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = true },
+              },
+            },
           },
         },
         cssls = {

@@ -87,6 +87,9 @@ return {
 
         -- fixes weird red color (ansi brown?) while searching in fzf (live grep)
         hl.FzfLuaLiveSym = { link = "FzfLuaFzfMatch" }
+
+        -- disable bold by default
+        hl.CursorLineNr = { fg = colors.orange }
       end,
       plugins = {
         auto = true,
