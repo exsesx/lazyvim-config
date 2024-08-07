@@ -61,8 +61,9 @@ end
 vim.keymap.set("n", "<leader>fo", "<Cmd>Oil<CR>", { desc = "Oil" })
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
 
--- NOTE: Fugitive
+-- NOTE: Git
 vim.keymap.set("n", "<leader>gt", "<CMD>tab Git<CR>", { desc = "Open Git Fugitive" })
+vim.keymap.set("n", "<leader>gn", "<CMD>Neogit kind=tab<CR>", { desc = "Open Neogit" })
 
 -- https://stackoverflow.com/questions/16134457/insert-a-newline-without-entering-in-insert-mode-vim
 -- Questionable really :thinking:
