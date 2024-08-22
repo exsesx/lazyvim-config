@@ -3,15 +3,14 @@
 -- Add any additional keymaps here
 
 -- NOTE: Tree
-
 vim.keymap.set("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })
 
--- NOTE: Remove lazygit keymaps
+-- NOTE: Obsidian
+vim.keymap.set("n", "<leader>Oo", "<Cmd>ObsidianOpen<CR>", { desc = "Open Obsidian " })
+vim.keymap.set("n", "<leader>Of", "<Cmd>ObsidianFollowLink<CR>", { desc = "Obsidian Follow Link" })
+vim.keymap.set("n", "<leader>fO", "<Cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian Quick Switch (Find)" })
 
--- vim.keymap.del("n", "<leader>gg")
--- vim.keymap.del("n", "<leader>gG")
-
--- NOTE: Neogit keymaps
+-- NOTE: Neogit
 
 -- local neogit = require("neogit")
 --
@@ -33,9 +32,10 @@ vim.keymap.set("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })
 
 vim.keymap.del("n", "<leader>l")
 vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>le", ":LazyExtras<CR>", { desc = "Lazy Extras" })
 
 -- NOTE: LSP
--- Muscle memory, sorry
+-- Muscle memory ¯\_(ツ)_/¯
 
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
@@ -65,16 +65,29 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Parent Directory" })
 vim.keymap.set("n", "<leader>gt", "<CMD>tab Git<CR>", { desc = "Open Git Fugitive" })
 vim.keymap.set("n", "<leader>gn", "<CMD>Neogit kind=tab<CR>", { desc = "Open Neogit" })
 
+-- Tricks
+
+-- TODO: Update neo-tree somehow? Re-open if already opened, etc.
+vim.keymap.set("n", "<leader>.", "<CMD>cd %:p:h<CR>", { desc = "Set Buffer Working Directory" })
+
 -- https://stackoverflow.com/questions/16134457/insert-a-newline-without-entering-in-insert-mode-vim
 -- Questionable really :thinking:
 -- vim.keymap.set("n", "oo", "m`o<Esc>``", { desc = "Insert new line in normal mode" })
 
--- NOTE: DiffView
+-- NOTE: Move Lines from A-j and A-j to A-Down and A-Up
+vim.keymap.del("n", "<A-j>")
+vim.keymap.del("n", "<A-k>")
+vim.keymap.del("i", "<A-j>")
+vim.keymap.del("i", "<A-k>")
+vim.keymap.del("v", "<A-j>")
+vim.keymap.del("v", "<A-k>")
 
--- vim.keymap.set("n", "<leader>gd", function()
---   if next(require("diffview.lib").views) == nil then
---     vim.cmd("DiffviewOpen")
---   else
---     vim.cmd("DiffviewClose")
---   end
--- end, { desc = "Toggle Diff View" })
+vim.keymap.set("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+vim.keymap.set("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+vim.keymap.set("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+vim.keymap.set("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+vim.keymap.set("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+vim.keymap.set("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+
+-- NOTE: Undotree
+vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle)

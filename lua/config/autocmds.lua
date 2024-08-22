@@ -41,3 +41,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! Copilot disable")
+  end,
+})
