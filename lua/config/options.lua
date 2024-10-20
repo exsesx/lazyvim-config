@@ -27,3 +27,10 @@ vim.opt.wrap = true
 -- vim.o.fillchars.vert = "▏"
 -- vim.o.fillchars.horiz = "▁"
 -- vim.opt.listchars:append({ vert = "#", horiz = "-" })
+
+vim.opt.cursorline = false
+
+-- Ruby
+vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+-- vim.g.lazyvim_ruby_lsp = "solargraph"
+vim.g.lazyvim_ruby_formatter = "rubocop"

@@ -38,6 +38,11 @@ return {
           ["ctrl-alt-h"] = { actions.toggle_hidden },
         },
       },
+      git = {
+        status = {
+          no_header = true,
+        },
+      },
     },
   },
 }

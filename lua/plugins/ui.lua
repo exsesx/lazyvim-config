@@ -4,68 +4,23 @@ local current_colorscheme = "tokyonight" -- or catppuccin
 
 return {
   {
-    -- https://github.com/sainnhe/everforest?tab=readme-ov-file
-    "sainnhe/everforest",
-    lazy = true,
-    event = "VeryLazy",
-    init = function()
-      vim.g.everforest_transparent_background = 2
-      vim.g.everforest_better_performance = 1
-      vim.g.everforest_current_word = "grey background"
-    end,
-  },
-
-  -- https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
-  {
-    "sainnhe/gruvbox-material",
-    lazy = true,
-    event = "VeryLazy",
-    config = function()
-      vim.g.gruvbox_material_transparent_background = 2
-      vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_current_word = "grey background"
-    end,
-  },
-
-  -- https://github.com/sainnhe/edge/blob/master/doc/edge.txt
-  {
-    "sainnhe/edge",
-    lazy = true,
-    event = "VeryLazy",
-    config = function()
-      vim.g.edge_transparent_background = 2
-      vim.g.edge_better_performance = 1
-      vim.g.edge_current_word = "grey background"
-      vim.g.edge_style = "aura"
-    end,
-  },
-
-  -- https://github.com/sainnhe/sonokai/blob/master/doc/sonokai.txt
-  {
-    "sainnhe/sonokai",
-    lazy = true,
-    event = "VeryLazy",
-    config = function()
-      vim.g.sonokai_transparent_background = 2
-      vim.g.sonokai_better_performance = 1
-      vim.g.sonokai_current_word = "grey background"
-      -- vim.g.sonokai_style = "shusia"
-    end,
-  },
-
-  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
+    --- WRONG HERE
+    ---@type tokyonight.Config
     opts = {
+      style = "night",
       transparent = true,
-      style = "moon",
       styles = {
         sidebars = "transparent",
         floats = "transparent",
+        comments = { italic = true },
+        keywords = { italic = false },
+        functions = {},
+        variables = {},
       },
-      dim_inactive = true,
-      -- colors https://github.com/folke/tokyonight.nvim/blob/main/extras/lua/tokyonight_moon.lua
+      cache = true,
       on_colors = function(colors)
         colors.bg_statusline = colors.none
         colors.border = colors.blue -- border splits color
@@ -106,7 +61,8 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
-        section_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
+        section_separators = { left = " ", right = " " },
         component_separators = "",
         theme = current_colorscheme,
       },
@@ -119,6 +75,7 @@ return {
             end,
           },
         },
+        -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua#L129
         lualine_y = {
           { "progress" },
         },

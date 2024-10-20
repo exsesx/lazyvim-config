@@ -1,6 +1,6 @@
 return {
   {
-    "MeanderingProgrammer/markdown.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     opts = {
       file_types = { "markdown", "vimwiki" },
       code = { -- Determines how code blocks & inline code are rendered:

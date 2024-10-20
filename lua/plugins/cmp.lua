@@ -5,7 +5,7 @@ return {
       local cmp = require("cmp")
 
       -- Ignore preselect from LSP
-      opts.preselect = cmp.PreselectMode.None
+      -- opts.preselect = cmp.PreselectMode.None
       -- opts.completion = {
       --   completeopt = "menu,menuone,noselect",
       -- }

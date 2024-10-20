@@ -75,19 +75,19 @@ vim.keymap.set("n", "<leader>.", "<CMD>cd %:p:h<CR>", { desc = "Set Buffer Worki
 -- vim.keymap.set("n", "oo", "m`o<Esc>``", { desc = "Insert new line in normal mode" })
 
 -- NOTE: Move Lines from A-j and A-j to A-Down and A-Up
-vim.keymap.del("n", "<A-j>")
-vim.keymap.del("n", "<A-k>")
-vim.keymap.del("i", "<A-j>")
-vim.keymap.del("i", "<A-k>")
-vim.keymap.del("v", "<A-j>")
-vim.keymap.del("v", "<A-k>")
+-- vim.keymap.del("n", "<A-j>")
+-- vim.keymap.del("n", "<A-k>")
+-- vim.keymap.del("i", "<A-j>")
+-- vim.keymap.del("i", "<A-k>")
+-- vim.keymap.del("v", "<A-j>")
+-- vim.keymap.del("v", "<A-k>")
 
-vim.keymap.set("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-vim.keymap.set("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
-vim.keymap.set("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-vim.keymap.set("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-vim.keymap.set("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
-vim.keymap.set("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+vim.keymap.set("n", "<A-S-Down>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+vim.keymap.set("n", "<A-S-Up>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+vim.keymap.set("i", "<A-S-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+vim.keymap.set("i", "<A-S-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+vim.keymap.set("v", "<A-S-Down>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+vim.keymap.set("v", "<A-S-Up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- NOTE: Undotree
 vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle)
