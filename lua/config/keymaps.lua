@@ -91,3 +91,6 @@ vim.keymap.set("v", "<A-S-Up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- NOTE: Undotree
 vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle)
+
+-- From NvChad
+vim.keymap.set("n", ";", ":", { noremap = true })

@@ -1,5 +1,7 @@
 -- https://www.lazyvim.org/plugins/colorscheme
 
+---@diagnostic disable-next-line: unused-local
+local tokyonight = require("tokyonight")
 local current_colorscheme = "tokyonight" -- or catppuccin
 
 return {
@@ -27,6 +29,7 @@ return {
       end,
       on_highlights = function(hl, colors)
         -- Transparent inlay hints
+        ---@diagnostic disable-next-line: param-type-mismatch
         hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
 
         -- Transparent Neogit WIP
@@ -62,7 +65,8 @@ return {
     opts = {
       options = {
         -- section_separators = { left = "", right = "" },
-        section_separators = { left = " ", right = " " },
+        section_separators = { left = "", right = "" },
+        -- section_separators = { left = " ", right = " " },
         component_separators = "",
         theme = current_colorscheme,
       },
@@ -77,6 +81,15 @@ return {
         },
         -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua#L129
         lualine_y = {
+          {
+            "filetype",
+            colored = true,
+            icon_only = true,
+            separator = "",
+            padding = { left = 1, right = 0 },
+            icon = { align = "left" },
+          },
+          { "filename" },
           { "progress" },
         },
         lualine_z = {

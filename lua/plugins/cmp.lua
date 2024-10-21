@@ -17,7 +17,7 @@ return {
 
       -- Annoying at times
       opts.experimental = {
-        ghost_text = false,
+        ghost_text = true,
       }
 
       opts.window = {
