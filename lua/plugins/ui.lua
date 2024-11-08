@@ -9,7 +9,6 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    --- WRONG HERE
     ---@type tokyonight.Config
     opts = {
       style = "night",
@@ -31,6 +30,10 @@ return {
         -- Transparent inlay hints
         ---@diagnostic disable-next-line: param-type-mismatch
         hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
+
+        ---@diagnostic disable-next-line: param-type-mismatch
+        hl.BlinkCmpMenu = vim.tbl_extend("force", hl.Pmenu, { bg = colors.none })
+        hl.BlinkCmpMenuBorder = hl.FloatBorder
 
         -- Transparent Neogit WIP
         -- hl.NeogitDiffAdd = { bg = colors.none }

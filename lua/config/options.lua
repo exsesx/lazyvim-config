@@ -5,6 +5,10 @@
 vim.opt.scrolloff = 12
 vim.opt.shell = "/opt/homebrew/bin/fish"
 
+vim.opt.formatoptions:remove("c")
+vim.opt.formatoptions:remove("r")
+vim.opt.formatoptions:remove("o")
+
 -- hide invisible characters (tabs, etc.)
 vim.opt.list = false
 
@@ -17,7 +21,7 @@ vim.diagnostic.config({
 })
 
 -- completions
-vim.opt.completeopt = { "menu", "menuone", "noinsert" }
+-- vim.opt.completeopt = { "menu", "menuone", "noinsert" }
 vim.opt.shortmess:append("c")
 
 -- enable wrap by default
@@ -28,9 +32,16 @@ vim.opt.wrap = true
 -- vim.o.fillchars.horiz = "▁"
 -- vim.opt.listchars:append({ vert = "#", horiz = "-" })
 
-vim.opt.cursorline = false
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
+vim.g.autoformat = false
+-- vim.g.lazyvim_eslint_auto_format = false
+
+vim.opt.swapfile = false
+vim.opt.spell = false
 
 -- Ruby
-vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+-- vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+-- vim.g.lazyvim_ruby_formatter = "rubocop"
 -- vim.g.lazyvim_ruby_lsp = "solargraph"
-vim.g.lazyvim_ruby_formatter = "rubocop"

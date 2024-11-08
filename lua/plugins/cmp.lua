@@ -1,64 +1,127 @@
+-- local truncate = function(text, max_width)
+--   if #text > max_width then
+--     return string.sub(text, 1, max_width) .. "…"
+--   else
+--     return text
+--   end
+-- end
+
 return {
+  -- TODO: If Copilot is enabled/disabled, change some cmp configuration values?
   {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      local cmp = require("cmp")
-
-      -- Ignore preselect from LSP
-      -- opts.preselect = cmp.PreselectMode.None
-      -- opts.completion = {
-      --   completeopt = "menu,menuone,noselect",
-      -- }
-
-      -- opts.preselect = cmp.PreselectMode.Item
-      -- opts.completion = {
-      --   completeopt = "menu,menuone,noinsert",
-      -- }
-
-      -- Annoying at times
-      opts.experimental = {
-        ghost_text = true,
-      }
-
-      opts.window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      }
-
-      local compare = cmp.config.compare
-
-      -- https://www.reddit.com/r/neovim/comments/14k7pbc/comment/jpp9u1a/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-
-      -- https://github.com/tjdevries/config_manager/blob/78608334a7803a0de1a08a9a4bd1b03ad2a5eb11/xdg_config/nvim/after/plugin/completion.lua#L129
-      opts.sorting = {
-        comparators = {
-          compare.offset,
-          compare.exact,
-          compare.score,
-          -- compare.scopes,
-          compare.recently_used,
-          compare.locality,
-
-          -- copied from cmp-under, but I don't think I need the plugin for this.
-          -- I might add some more of my own.
-          -- function(entry1, entry2)
-          --   local _, entry1_under = entry1.completion_item.label:find("^_+")
-          --   local _, entry2_under = entry2.completion_item.label:find("^_+")
-          --   entry1_under = entry1_under or 0
-          --   entry2_under = entry2_under or 0
-          --   if entry1_under > entry2_under then
-          --     return false
-          --   elseif entry1_under < entry2_under then
-          --     return true
-          --   end
-          -- end,
-
-          compare.kind,
-          -- compare.sort_text,
-          compare.length,
-          compare.order,
+    "Saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "enter",
+        -- Non-Copilot version:
+        -- ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+        ["<Tab>"] = {
+          function(cmp)
+            if cmp.is_in_snippet() then
+              return cmp.accept()
+            elseif require("copilot.suggestion").is_visible() then
+              LazyVim.create_undo()
+              require("copilot.suggestion").accept()
+              return true
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
+          "select_next",
+          "fallback",
         },
-      }
-    end,
+        ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+      },
+      windows = {
+        autocomplete = {
+          border = "rounded",
+          selection = "manual", -- "preselect" by default
+        },
+        signature_help = {
+          border = "rounded",
+        },
+        documentation = {
+          border = "rounded",
+        },
+      },
+      -- trigger = {
+      --   -- signature_help = {
+      --   --   enabled = true,
+      --   -- },
+      --   completion = {
+      --     show_on_accept_on_trigger_character = false,
+      --   },
+      -- },
+    },
   },
 }
+
+-- return {
+--   { "onsails/lspkind.nvim" },
+--   {
+--     "hrsh7th/nvim-cmp",
+--     opts = function(_, opts)
+--       local cmp = require("cmp")
+--
+--       -- Ignore preselect from LSP
+--       opts.preselect = cmp.PreselectMode.None
+--       opts.completion = {
+--         completeopt = "menu,menuone,noselect",
+--       }
+--       vim.o.completeopt = "menuone,noselect,preview"
+--
+--       -- opts.preselect = cmp.PreselectMode.Item
+--       -- opts.completion = {
+--       --   completeopt = "menu,menuone,noinsert",
+--       -- }
+--
+--       -- Annoying at times
+--       opts.experimental = {
+--         -- native_menu = false,
+--         ghost_text = false,
+--       }
+--
+--       opts.window = {
+--         completion = cmp.config.window.bordered(),
+--         documentation = cmp.config.window.bordered(),
+--       }
+--
+--       local compare = cmp.config.compare
+--       -- local lspkind = require("lspkind")
+--
+--       -- https://www.reddit.com/r/neovim/comments/14k7pbc/comment/jpp9u1a/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+--
+--       -- https://github.com/tjdevries/config_manager/blob/78608334a7803a0de1a08a9a4bd1b03ad2a5eb11/xdg_config/nvim/after/plugin/completion.lua#L129
+--       opts.sorting = {
+--         comparators = {
+--           compare.offset,
+--           compare.exact,
+--           compare.score,
+--           -- compare.scopes,
+--           compare.recently_used,
+--           compare.locality,
+--
+--           -- copied from cmp-under, but I don't think I need the plugin for this.
+--           -- I might add some more of my own.
+--           -- function(entry1, entry2)
+--           --   local _, entry1_under = entry1.completion_item.label:find("^_+")
+--           --   local _, entry2_under = entry2.completion_item.label:find("^_+")
+--           --   entry1_under = entry1_under or 0
+--           --   entry2_under = entry2_under or 0
+--           --   if entry1_under > entry2_under then
+--           --     return false
+--           --   elseif entry1_under < entry2_under then
+--           --     return true
+--           --   end
+--           -- end,
+--
+--           compare.kind,
+--           -- compare.sort_text,
+--           compare.length,
+--           compare.order,
+--         },
+--       }
+--     end,
+--   },
+-- }

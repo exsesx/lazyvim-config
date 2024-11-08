@@ -56,6 +56,7 @@ return {
           },
         },
         emmet_language_server = {
+          showSuggestionsAsSnippets = true,
           filetypes = {
             "css",
             "eruby",

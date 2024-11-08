@@ -3,8 +3,13 @@
 -- Add any additional autocmds here
 
 -- do not add comment on the new line if the previous line is commented
-vim.api.nvim_create_autocmd("BufRead", {
-  command = "set formatoptions-=cro",
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove("c")
+    vim.opt_local.formatoptions:remove("r")
+    vim.opt_local.formatoptions:remove("o")
+  end,
 })
 
 -- NOTE: Colorschemes by sainnhe are not fully transparent
