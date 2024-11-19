@@ -1,10 +1,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      -- Messes with tsx/jsx HTML tags indentation
-      indent = { enable = false },
-    },
+    -- opts = {
+    --   -- Messes with tsx/jsx HTML tags indentation
+    --   indent = { enable = false },
+    -- },
   },
   -- TODO: Enable later?
   -- Disabled in favor of mini.ai

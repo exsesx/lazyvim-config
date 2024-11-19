@@ -1,5 +1,5 @@
 return {
-  { "mrjones2014/smart-splits.nvim", lazy = false },
+  -- { "mrjones2014/smart-splits.nvim", lazy = false },
   -- {
   --   "hiasr/vim-zellij-navigator.nvim",
   --   lazy = false,

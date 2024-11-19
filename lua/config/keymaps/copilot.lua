@@ -4,6 +4,7 @@ local copilot_exists = pcall(require, "copilot")
 if copilot_exists then
   Snacks.toggle({
     name = "Copilot Completion",
+    icon = "",
     color = {
       enabled = "azure",
       disabled = "orange",

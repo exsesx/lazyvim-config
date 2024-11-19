@@ -2,9 +2,6 @@ return {
   -- https://github.com/folke/noice.nvim
   {
     "folke/noice.nvim",
-    -- FIXME: https://github.com/folke/noice.nvim/issues/923
-    -- Noice redraw issue temporary revert
-    version = "4.4.7",
     opts = {
       presets = {
         lsp_doc_border = true,

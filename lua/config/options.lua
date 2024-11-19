@@ -41,6 +41,16 @@ vim.g.autoformat = false
 vim.opt.swapfile = false
 vim.opt.spell = false
 
+vim.opt.laststatus = 3
+
+-- in cmp, instead of inline suggestions
+vim.g.ai_cmp = false
+
+-- biome linter + formatter
+vim.g.lazyvim_prettier_needs_config = true
+
+-- and here
+
 -- Ruby
 -- vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 -- vim.g.lazyvim_ruby_formatter = "rubocop"
