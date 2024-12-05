@@ -32,13 +32,16 @@ return {
         hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
 
         ---@diagnostic disable-next-line: param-type-mismatch
+        hl.Pmenu = vim.tbl_extend("force", hl.Pmenu, { bg = colors.none })
+
+        ---@diagnostic disable-next-line: param-type-mismatch
         hl.BlinkCmpMenu = vim.tbl_extend("force", hl.Pmenu, { bg = colors.none })
         hl.BlinkCmpMenuBorder = hl.FloatBorder
 
-        -- Transparent Neogit WIP
-        -- hl.NeogitDiffAdd = { bg = colors.none }
-        -- hl.NeogitDiffDelete = { bg = colors.none }
-        -- hl.NeogitDiffHeader = { bg = colors.none }
+        -- NOTE: mcauley-penney/visual-whitespace.nvim
+        hl.VisualNonText = { bg = hl.Visual.bg, fg = hl.Comment.fg }
+
+        -- hl.SnippetTabstop = hl.Conceal
 
         -- hl.NeoTreeVertSplit = { fg = colors.none, bg = colors.none }
         -- hl.NeoTreeFloatBorder = { fg = colors.none, bg = colors.none }

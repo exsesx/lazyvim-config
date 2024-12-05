@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 vim.opt.scrolloff = 12
-vim.opt.shell = "/opt/homebrew/bin/fish"
+-- vim.opt.shell = "/opt/homebrew/bin/fish"
 
 vim.opt.formatoptions:remove("c")
 vim.opt.formatoptions:remove("r")
@@ -27,13 +27,8 @@ vim.opt.shortmess:append("c")
 -- enable wrap by default
 vim.opt.wrap = true
 
--- TODO: Make split borders thicker if possible
--- vim.o.fillchars.vert = "▏"
--- vim.o.fillchars.horiz = "▁"
--- vim.opt.listchars:append({ vert = "#", horiz = "-" })
-
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
+-- vim.opt.cursorline = true
+-- vim.opt.cursorlineopt = "number"
 
 vim.g.autoformat = false
 -- vim.g.lazyvim_eslint_auto_format = false
@@ -46,10 +41,10 @@ vim.opt.laststatus = 3
 -- in cmp, instead of inline suggestions
 vim.g.ai_cmp = false
 
+-- vim.g.visual_whitespace = false
+
 -- biome linter + formatter
 vim.g.lazyvim_prettier_needs_config = true
-
--- and here
 
 -- Ruby
 -- vim.g.lazyvim_ruby_lsp = "ruby_lsp"

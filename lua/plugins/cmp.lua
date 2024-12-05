@@ -6,21 +6,29 @@ return {
     opts = {
       keymap = {
         preset = "enter",
-        ["<Tab>"] = vim.g.ai_cmp == false
-            and { LazyVim.cmp.map({ "snippet_forward", "ai_accept" }), "select_next", "fallback" }
-          or { LazyVim.cmp.map({ "snippet_forward" }), "select_next", "fallback" },
+        ["<Tab>"] = {
+          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          "select_next",
+          "fallback",
+        },
         ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
       },
-      windows = {
-        autocomplete = {
-          border = "rounded",
-          -- selection = "manual", -- "preselect" by default
+      completion = {
+        trigger = {
+          show_on_x_blocked_trigger_characters = { "'", '"', "(", ",", "{", ">", "]", "}", ":", "[" },
         },
-        signature_help = {
+        menu = {
           border = "rounded",
         },
         documentation = {
-          border = "rounded",
+          window = {
+            border = "rounded",
+          },
+        },
+        signature = {
+          window = {
+            border = "rounded",
+          },
         },
       },
     },
