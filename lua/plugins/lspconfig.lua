@@ -1,13 +1,22 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      require("lspconfig.ui.windows").default_options.border = "rounded"
-    end,
+
+    -- NOTE: disables lazy loading
+    -- init = function()
+    --   require("lspconfig.ui.windows").default_options.border = "rounded"
+    -- end,
+
     opts = {
       servers = {
         graphql = {
-          filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
+          filetypes = {
+            "graphql",
+            "typescriptreact",
+            "javascriptreact",
+            "typescript",
+            "javascript",
+          },
         },
         lua_ls = {
           settings = {
@@ -30,6 +39,9 @@ return {
               suggestionActions = {
                 enabled = false,
               },
+              tsserver = {
+                maxTsServerMemory = 8192,
+              },
               -- https://github.com/yioneko/vtsls/blob/33ab3a11a5fcb3038d10d4f47d91655683b21dbc/packages/service/configuration.schema.json
               inlayHints = {
                 enumMemberValues = { enabled = true },
@@ -44,15 +56,24 @@ return {
         },
         cssls = {
           settings = {
-            css = { validate = true, lint = {
-              unknownAtRules = "ignore",
-            } },
-            scss = { validate = true, lint = {
-              unknownAtRules = "ignore",
-            } },
-            less = { validate = true, lint = {
-              unknownAtRules = "ignore",
-            } },
+            css = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+            scss = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+            less = {
+              validate = true,
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
           },
         },
         emmet_language_server = {

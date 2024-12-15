@@ -4,10 +4,21 @@ map("n", "<A-S-Down>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move
 map("n", "<A-S-Up>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 map("i", "<A-S-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 map("i", "<A-S-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-S-Down>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-S-Up>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+map(
+  "v",
+  "<A-S-Down>",
+  ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv",
+  { desc = "Move Down" }
+)
+map(
+  "v",
+  "<A-S-Up>",
+  ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv",
+  { desc = "Move Up" }
+)
 
 -- From NvChad
+-- NOTE: ";" is used for next
 -- map("n", ";", ":", { noremap = true })
 
 -- From Primeagen and https://vineeth.io/posts/neovim-setup
@@ -22,6 +33,6 @@ map("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 -- Questionable really :thinking:
 -- map("n", "oo", "m`o<Esc>``", { desc = "Insert new line in normal mode" })
 
-map("n", "<leader>uP", function()
-  require("precognition").toggle()
-end, { desc = "Toggle Precognition" })
+-- NOTE: Interesting stuff https://www.reddit.com/r/neovim/comments/1h7f0bz/share_your_coolest_keymap/
+map("n", "yc", "yygccp", { desc = "Duplicate a line and comment out the first line", remap = true })
+map("n", "<C-c>", "ciw") -- from folke

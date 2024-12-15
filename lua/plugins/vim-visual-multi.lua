@@ -12,6 +12,11 @@ return {
         ["Add Cursor Down"] = "<M-Down>",
         ["Undo"] = "u",
         ["Redo"] = "<C-r>",
+
+        -- https://github.com/Saghen/blink.cmp/issues/406#issuecomment-2537184121
+        ["I Return"] = "<S-CR>",
+        ["I Down Arrow"] = "",
+        ["I Up Arrow"] = "",
       }
     end,
   },

@@ -23,11 +23,11 @@ return {
           -- ex: shift+k on Typescript code
           silent = true,
         },
-        signature = {
-          auto_open = {
-            enabled = false,
-          },
-        },
+        -- signature = {
+        --   auto_open = {
+        --     enabled = false,
+        --   },
+        -- },
       },
     },
   },
