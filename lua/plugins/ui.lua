@@ -71,8 +71,8 @@ return {
     opts = {
       options = {
         -- section_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
-        -- section_separators = { left = " ", right = " " },
+        -- section_separators = { left = "", right = "" },
+        section_separators = { left = " ", right = " " },
         component_separators = "",
         theme = current_colorscheme,
       },

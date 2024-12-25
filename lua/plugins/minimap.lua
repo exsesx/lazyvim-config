@@ -2,6 +2,7 @@ return {
   {
     "echasnovski/mini.map",
     event = "VeryLazy",
+    enabled = false,
     config = function()
       local map = require("mini.map")
 
@@ -34,7 +35,7 @@ return {
         window = {
           focusable = false,
           side = "right",
-          width = 10,
+          width = 8,
           show_integration_count = false,
           winblend = 0,
           zindex = 21, -- nvim-treesitter-context zindex is 20

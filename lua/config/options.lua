@@ -5,7 +5,7 @@
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
-vim.opt.scrolloff = 16
+vim.opt.scrolloff = 12
 -- vim.opt.shell = "/opt/homebrew/bin/fish"
 
 vim.opt.formatoptions:remove("c")
