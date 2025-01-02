@@ -43,7 +43,7 @@ vim.opt.spell = false
 vim.opt.laststatus = 3
 
 -- in cmp, instead of inline suggestions
--- vim.g.ai_cmp = true
+vim.g.ai_cmp = true
 
 -- vim.g.visual_whitespace = false
 
@@ -56,3 +56,6 @@ vim.opt.laststatus = 3
 -- vim.g.lazyvim_ruby_lsp = "solargraph"
 
 vim.g.snacks_animate = false
+
+-- Zig
+vim.g.zig_fmt_autosave = 0

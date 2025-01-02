@@ -14,6 +14,17 @@ return {
         ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
       },
       completion = {
+        -- accept = {
+        --   -- experimental auto-brackets support
+        --   auto_brackets = {
+        --     enabled = true,
+        --   },
+        -- },
+        ghost_text = {
+          -- enabled = vim.g.ai_cmp,
+          -- NOTE: I don't like layout being shifted all over the place
+          enabled = false,
+        },
         menu = {
           border = "rounded",
         },

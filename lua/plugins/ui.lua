@@ -2,7 +2,7 @@
 
 ---@diagnostic disable-next-line: unused-local
 local tokyonight = require("tokyonight")
-local current_colorscheme = "tokyonight-moon" -- or catppuccin
+local current_colorscheme = "tokyonight-night" -- or catppuccin
 
 return {
   {
@@ -27,7 +27,6 @@ return {
         colors.border = colors.blue -- border splits color
       end,
       on_highlights = function(hl, colors)
-        -- Transparent inlay hints
         ---@diagnostic disable-next-line: param-type-mismatch
         hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
 
@@ -38,20 +37,8 @@ return {
         hl.BlinkCmpMenu = vim.tbl_extend("force", hl.Pmenu, { bg = colors.none })
         hl.BlinkCmpMenuBorder = hl.FloatBorder
 
-        -- NOTE: mcauley-penney/visual-whitespace.nvim
-        -- hl.VisualNonText = { bg = hl.Visual.bg, fg = hl.Comment.fg }
-
-        -- hl.SnippetTabstop = hl.Conceal
-
-        -- hl.NeoTreeVertSplit = { fg = colors.none, bg = colors.none }
-        -- hl.NeoTreeFloatBorder = { fg = colors.none, bg = colors.none }
-
         -- make neotree border "transparent", but keep splits border colored
         hl.NeoTreeWinSeparator = { fg = colors.bg, bg = colors.none }
-
-        -- hl.VertSplit = { fg = colors.none, bg = colors.none }
-        -- hl.WinSeparator = { fg = colors.bg, bg = colors.none }
-        -- hl.FloatBorder = { fg = colors.none, bg = colors.none }
 
         -- fixes weird red color (ansi brown?) while searching in fzf (live grep)
         hl.FzfLuaLiveSym = { link = "FzfLuaFzfMatch" }
@@ -59,10 +46,10 @@ return {
         -- disable bold by default
         hl.CursorLineNr = { fg = colors.orange }
       end,
-      plugins = {
-        auto = true,
-        markdown = true,
-      },
+      -- plugins = {
+      --   auto = true,
+      --   markdown = true,
+      -- },
     },
   },
 

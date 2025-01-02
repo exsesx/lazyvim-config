@@ -35,4 +35,4 @@ map("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 
 -- NOTE: Interesting stuff https://www.reddit.com/r/neovim/comments/1h7f0bz/share_your_coolest_keymap/
 map("n", "yc", "yygccp", { desc = "Duplicate a line and comment out the first line", remap = true })
-map("n", "<C-c>", "ciw") -- from folke
+-- map("n", "<C-c>", "ciw") -- from folke
