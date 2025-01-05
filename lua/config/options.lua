@@ -6,7 +6,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
 vim.opt.scrolloff = 12
--- vim.opt.shell = "/opt/homebrew/bin/fish"
+vim.opt.shell = "/opt/homebrew/bin/bash"
 
 vim.opt.formatoptions:remove("c")
 vim.opt.formatoptions:remove("r")
@@ -14,6 +14,14 @@ vim.opt.formatoptions:remove("o")
 
 -- hide invisible characters (tabs, etc.)
 vim.opt.list = false
+
+vim.opt.listchars = {
+  tab = "▷ ", -- Tab character (two characters: ▷ and space)
+  trail = "·", -- Trailing space
+  extends = "◣", -- Characters extending past the end of the line
+  precedes = "◢", -- Characters preceding the start of the line
+  nbsp = "○", -- Non-breaking space
+}
 
 -- fix nvim-cmp transparency
 vim.opt.pumblend = 0
@@ -59,3 +67,6 @@ vim.g.snacks_animate = false
 
 -- Zig
 vim.g.zig_fmt_autosave = 0
+
+-- Neovim fixes
+vim.hl = vim.highlight

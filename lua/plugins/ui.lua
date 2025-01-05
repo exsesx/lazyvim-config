@@ -2,7 +2,7 @@
 
 ---@diagnostic disable-next-line: unused-local
 local tokyonight = require("tokyonight")
-local current_colorscheme = "tokyonight-night" -- or catppuccin
+local current_colorscheme = "tokyonight-moon" -- or catppuccin
 
 return {
   {
@@ -29,6 +29,9 @@ return {
       on_highlights = function(hl, colors)
         ---@diagnostic disable-next-line: param-type-mismatch
         hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
+
+        ---@diagnostic disable-next-line: param-type-mismatch
+        hl.Todo = vim.tbl_extend("force", hl.Todo, { bg = colors.none })
 
         ---@diagnostic disable-next-line: param-type-mismatch
         hl.Pmenu = vim.tbl_extend("force", hl.Pmenu, { bg = colors.none })

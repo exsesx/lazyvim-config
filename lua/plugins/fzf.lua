@@ -28,6 +28,7 @@ return {
       files = {
         no_header = no_header,
         cwd_prompt = false,
+        fd_opts = [[--color=never --type f --hidden --follow --exclude .git --exclude node_modules]],
         actions = {
           -- o for ignOre
           -- i from hIdden
@@ -36,8 +37,6 @@ return {
           ["alt-h"] = false,
           -- disable toggle ignore
           ["ctrl-g"] = false,
-
-          -- TEST
         },
       },
       grep = {
