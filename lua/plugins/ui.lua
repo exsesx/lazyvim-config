@@ -49,10 +49,10 @@ return {
         -- disable bold by default
         hl.CursorLineNr = { fg = colors.orange }
       end,
-      -- plugins = {
-      --   auto = true,
-      --   markdown = true,
-      -- },
+      plugins = {
+        auto = true,
+        markdown = true,
+      },
     },
   },
 
