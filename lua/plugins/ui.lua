@@ -48,6 +48,11 @@ return {
 
         -- disable bold by default
         hl.CursorLineNr = { fg = colors.orange }
+
+        -- gitsigns inline color fixes
+        hl.GitSignsAddInline = { bg = colors.git.add, fg = colors.bg }
+        hl.GitSignsChangeInline = { bg = colors.git.change, fg = colors.bg }
+        hl.GitSignsDeleteInline = { bg = colors.git.delete, fg = colors.bg }
       end,
       plugins = {
         auto = true,

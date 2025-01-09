@@ -5,6 +5,9 @@ return {
     -- HACK: Sounds like a fun/useful contribution to LazyVim repo
 
     formatters = {
+      sqlfluff = {
+        args = { "format", "-" },
+      },
       prettier = {
         require_cwd = true,
         condition = function()
