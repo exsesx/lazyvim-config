@@ -39,6 +39,15 @@ return {
           ["ctrl-g"] = false,
         },
       },
+      commits = {
+        no_header = no_header,
+      },
+      bcommits = {
+        no_header = no_header,
+      },
+      branches = {
+        no_header = no_header,
+      },
       grep = {
         no_header = no_header,
         -- DEFAULT from https://github.com/ibhagwan/fzf-lua/blob/1bba731df46feb1751dca1632268aae41ed5ac15/lua/fzf-lua/defaults.lua#L316-L317
