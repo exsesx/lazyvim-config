@@ -31,6 +31,9 @@ return {
         hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
 
         ---@diagnostic disable-next-line: param-type-mismatch
+        hl.TabLineFill = vim.tbl_extend("force", hl.TabLineFill, { bg = colors.none })
+
+        ---@diagnostic disable-next-line: param-type-mismatch
         hl.Todo = vim.tbl_extend("force", hl.Todo, { bg = colors.none })
 
         ---@diagnostic disable-next-line: param-type-mismatch
@@ -65,9 +68,9 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
-        -- section_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         -- section_separators = { left = "", right = "" },
-        section_separators = { left = " ", right = " " },
+        -- section_separators = { left = " ", right = " " },
         component_separators = "",
         theme = current_colorscheme,
       },
@@ -75,6 +78,8 @@ return {
         lualine_a = {
           {
             "mode",
+            separator = { left = "" },
+            padding = { left = 0, right = 1 },
             fmt = function(mode)
               return vim.b["visual_multi"] and mode .. " - MULTI" or mode
             end,
@@ -94,7 +99,11 @@ return {
           { "progress" },
         },
         lualine_z = {
-          { "location" },
+          {
+            "location",
+            separator = { right = "" },
+            padding = { left = 1, right = 0 },
+          },
         },
       },
     },

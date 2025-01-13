@@ -4,6 +4,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = {
     filesystem = {
+      hijack_netrw_behavior = "open_current",
       window = {
         mappings = {
           ["d"] = "delete",
@@ -43,6 +44,14 @@ return {
 
             require("neo-tree.sources.manager").refresh(state.name)
           end)
+        end,
+
+        open_visual = function(_, selected_nodes)
+          for _, node in ipairs(selected_nodes) do
+            if node.type == "file" then
+              vim.cmd("edit " .. vim.fn.fnameescape(node.path))
+            end
+          end
         end,
       },
     },
