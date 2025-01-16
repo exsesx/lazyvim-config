@@ -76,6 +76,45 @@ return {
             },
           },
         },
+        -- TODO: Pick harper_ls or typos_ls (or other better alternatives for spellchecking)
+        --  Harper is more robust, supports markdown, etc.
+        --  But typos_ls is more lightweight and has less false positives, figures out camelCase better, etc.
+
+        -- harper_ls = {
+        --   settings = {
+        --     ["harper-ls"] = {
+        --       userDictPath = "~/.config/harper/dict.txt",
+        --       fileDictPath = "~/.config/harper/",
+        --       -- isolateEnglish = true,
+        --       -- diagnosticSeverity = "hint", -- Can also be "information", "warning", or "error"
+        --       linters = {
+        --         spell_check = true,
+        --         spelled_numbers = false,
+        --         an_a = true,
+        --         sentence_capitalization = false,
+        --         unclosed_quotes = true,
+        --         wrong_quotes = false,
+        --         long_sentences = true,
+        --         repeated_words = true,
+        --         spaces = true,
+        --         matcher = true,
+        --         correct_number_suffix = true,
+        --         number_suffix_capitalization = true,
+        --         multiple_sequential_pronouns = true,
+        --         linking_verbs = false,
+        --         avoid_curses = true,
+        --         terminating_conjunctions = true,
+        --       },
+        --     },
+        --   },
+        -- },
+        typos_lsp = {
+          init_options = {
+            -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification
+            -- Error | Warning | Information | Hint
+            diagnosticSeverity = "Hint",
+          },
+        },
         emmet_language_server = {
           showSuggestionsAsSnippets = true,
           -- showAbbreviationSuggestions = true,

@@ -11,3 +11,4 @@ map("n", "<leader>ld", "<leader>cd", { desc = "Line Diagnostics", remap = true }
 map({ "n", "v" }, "<leader>lf", "<leader>cf", { desc = "Format", remap = true })
 
 map("n", "<leader>lr", "<leader>cr", { desc = "Rename (inc-rename.nvim)", remap = true })
+map("n", "<leader>lR", "<leader>cR", { desc = "Rename File", remap = true })

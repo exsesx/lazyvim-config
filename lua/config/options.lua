@@ -5,7 +5,7 @@
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
-vim.opt.scrolloff = 12
+vim.opt.scrolloff = 10
 vim.opt.shell = "/opt/homebrew/bin/bash"
 
 vim.opt.formatoptions:remove("c")
@@ -52,6 +52,9 @@ vim.opt.laststatus = 3
 
 -- in cmp, instead of inline suggestions
 vim.g.ai_cmp = true
+
+-- use my custom lazygit config
+vim.g.lazygit_config = false
 
 -- vim.g.visual_whitespace = false
 

@@ -28,7 +28,7 @@ return {
       end,
       on_highlights = function(hl, colors)
         ---@diagnostic disable-next-line: param-type-mismatch
-        hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
+        -- hl.LspInlayHint = vim.tbl_extend("force", hl.LspInlayHint, { bg = colors.none })
 
         ---@diagnostic disable-next-line: param-type-mismatch
         hl.TabLineFill = vim.tbl_extend("force", hl.TabLineFill, { bg = colors.none })
@@ -56,6 +56,9 @@ return {
         hl.GitSignsAddInline = { bg = colors.git.add, fg = colors.bg }
         hl.GitSignsChangeInline = { bg = colors.git.change, fg = colors.bg }
         hl.GitSignsDeleteInline = { bg = colors.git.delete, fg = colors.bg }
+
+        -- snacks
+        hl.SnacksPickerSelected = { fg = colors.blue }
       end,
       plugins = {
         auto = true,
@@ -66,15 +69,17 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
+    opts = function(_, opts)
+      opts.options = vim.tbl_deep_extend("force", opts.options or {}, {
         section_separators = { left = "", right = "" },
+        -- Uncomment and modify the line below to use different separators
         -- section_separators = { left = "", right = "" },
         -- section_separators = { left = " ", right = " " },
         component_separators = "",
         theme = current_colorscheme,
-      },
-      sections = {
+      })
+
+      opts.sections = vim.tbl_deep_extend("force", opts.sections or {}, {
         lualine_a = {
           {
             "mode",
@@ -105,8 +110,15 @@ return {
             padding = { left = 1, right = 0 },
           },
         },
-      },
-    },
+      })
+
+      -- TODO: This section in LazyVim is helpful, however it takes too much space
+      if #opts.sections.lualine_c > 0 then
+        table.remove(opts.sections.lualine_c, #opts.sections.lualine_c)
+      end
+
+      return opts
+    end,
   },
 
   {

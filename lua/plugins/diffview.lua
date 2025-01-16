@@ -9,8 +9,8 @@ return {
     return {
       hooks = {
         diff_buf_read = function()
-          -- vim.opt_local.wrap = false
-          -- vim.opt_local.list = false
+          vim.opt_local.wrap = false
+          vim.opt_local.list = false
           -- vim.opt_local.colorcolumn = { 80 }
           vim.opt_local.cursorline = false
         end,
@@ -68,10 +68,6 @@ return {
       "<leader>gdo",
       function()
         local user_input = vim.fn.input("Revision to Open: ")
-
-        if user_input == "" then
-          return
-        end
 
         vim.cmd("DiffviewOpen " .. user_input)
       end,

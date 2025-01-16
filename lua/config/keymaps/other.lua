@@ -25,3 +25,7 @@ map("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 -- NOTE: Interesting stuff https://www.reddit.com/r/neovim/comments/1h7f0bz/share_your_coolest_keymap/
 map("n", "yc", "yygccp", { desc = "Duplicate a line and comment out the first line", remap = true })
 -- map("n", "<C-c>", "ciw") -- from folke
+
+-- inspired by helix, tbh
+map({ "n", "x" }, "gl", "$", { remap = true, desc = "Go to last character of the line" })
+map({ "n", "x" }, "gh", "^", { remap = true, desc = "Go to first character of the line" })
