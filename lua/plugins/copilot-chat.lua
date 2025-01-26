@@ -5,6 +5,8 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
+    -- NOTE: in favor of ./avante.lua
+    enabled = false,
     cmd = "CopilotChat",
     opts = {
       auto_insert_mode = true,

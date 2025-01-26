@@ -33,7 +33,7 @@ vim.diagnostic.config({
 })
 
 -- completions
--- vim.opt.completeopt = { "menu", "menuone", "noinsert" }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.shortmess:append("c")
 
 -- enable wrap by default

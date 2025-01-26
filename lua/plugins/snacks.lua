@@ -1,5 +1,45 @@
 return {
   "snacks.nvim",
+  keys = {
+    {
+      "<leader><space>",
+      function()
+        Snacks.picker.smart()
+      end,
+      desc = "Smart Open",
+    },
+    {
+      "<leader>fd",
+      function()
+        Snacks.picker.git_diff()
+      end,
+      desc = "Find Diff",
+    },
+    {
+      "<leader>fB",
+      function()
+        Snacks.picker("git_branches")
+      end,
+      desc = "Find Git Branches",
+    },
+    {
+      "<leader>gs",
+      function()
+        Snacks.picker.git_status({
+          win = {
+            input = {
+              keys = {
+                -- ["<Tab>"] = { "git_stage", mode = { "n", "i" } },
+                ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
+                ["<Left>"] = { "git_stage", mode = { "n", "i" } },
+              },
+            },
+          },
+        })
+      end,
+      desc = "Git Status",
+    },
+  },
   opts = {
     dashboard = {
       preset = {
@@ -10,6 +50,7 @@ return {
 ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+        -- Cool ASCII project: https://itoa.hex.dance/
         -- ASCII Art: https://patorjk.com/software/taag/#p=testall&c=lua&f=Doh&t=Neovim
         -- stylua: ignore start
         --         header =
@@ -39,7 +80,8 @@ return {
       -- layout = "telescope",
       icons = {
         ui = {
-          selected = " ● ",
+          -- TODO: spacing is better, but inconsistent with other pickers (git branches, for example)
+          -- selected = " ● ",
         },
       },
       win = {

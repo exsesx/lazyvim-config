@@ -1,14 +1,13 @@
 -- https://www.lazyvim.org/plugins/colorscheme
 
----@diagnostic disable-next-line: unused-local
-local tokyonight = require("tokyonight")
-local current_colorscheme = "tokyonight-moon" -- or catppuccin
+local dark_colorscheme = "catppuccin-mocha"
+local light_colorscheme = "catppuccin-latte"
 
 return {
   {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
+    -- priority = 1000,
     ---@type tokyonight.Config
     opts = {
       style = "moon",
@@ -76,7 +75,7 @@ return {
         -- section_separators = { left = "", right = "" },
         -- section_separators = { left = " ", right = " " },
         component_separators = "",
-        theme = current_colorscheme,
+        theme = "auto",
       })
 
       opts.sections = vim.tbl_deep_extend("force", opts.sections or {}, {
@@ -124,7 +123,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = current_colorscheme,
+      colorscheme = dark_colorscheme,
     },
   },
 
@@ -139,13 +138,40 @@ return {
     },
   },
 
-  -- {
-  --   "catppuccin/nvim",
-  --   lazy = true,
-  --   name = "catppuccin",
-  --   opts = {
-  --     flavour = "macchiato",
-  --     transparent_background = true,
-  --   },
-  -- },
+  {
+    "f-person/auto-dark-mode.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    opts = {
+      set_dark_mode = function()
+        vim.api.nvim_set_option_value("background", "dark", {})
+        vim.api.nvim_command("colorscheme " .. dark_colorscheme)
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option_value("background", "light", {})
+        vim.api.nvim_command("colorscheme " .. light_colorscheme)
+      end,
+      update_interval = 3000,
+      fallback = "dark",
+    },
+  },
+
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    priority = 1000,
+    name = "catppuccin",
+    opts = {
+      flavour = "macchiato",
+      transparent_background = true,
+      custom_highlights = function(colors)
+        return {
+          ["@comment.note"] = { link = "TodoFgNote" },
+          ["@comment.warning"] = { link = "TodoFgWarn" },
+          ["@comment.todo"] = { link = "TodoFgTODO" },
+          ["@comment.error"] = { link = "TodoFgFIX" },
+        }
+      end,
+    },
+  },
 }

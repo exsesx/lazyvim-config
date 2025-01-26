@@ -20,5 +20,5 @@ Snacks.toggle({
       require("copilot.command").disable()
     end
   end,
-}):map("<leader>at")
+}):map("<leader>a<Tab>")
 -- end

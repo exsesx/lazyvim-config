@@ -8,6 +8,31 @@ return {
     -- end,
 
     opts = {
+      setup = {
+        tailwindcss = function(_, opts)
+          local tw = LazyVim.lsp.get_raw_config("tailwindcss")
+          opts.filetypes = opts.filetypes or {}
+
+          -- Add default filetypes
+          vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+
+          -- Remove excluded filetypes
+          --- @param ft string
+          opts.filetypes = vim.tbl_filter(function(ft)
+            return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
+          end, opts.filetypes)
+
+          -- Add additional filetypes
+          vim.list_extend(opts.filetypes, opts.filetypes_include or {})
+        end,
+        -- yamlls = function(_, opts)
+        --   Snacks.debug.inspect(opts.capabilities)
+        --
+        --   opts.capabilities = require("blink.cmp").get_lsp_capabilities({
+        --     textDocument = { completion = { completionItem = { snippetSupport = false } } },
+        --   })
+        -- end,
+      },
       servers = {
         graphql = {
           filetypes = {
@@ -24,6 +49,56 @@ return {
               workspace = { checkThirdParty = false },
               telemetry = { enable = false },
               hint = { enable = true },
+            },
+          },
+        },
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  -- Original:
+                  -- { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                  -- { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+
+                  -- https://github.com/tailwindlabs/tailwindcss-intellisense/issues/868
+                  {
+                    "(?:clsx|cva|cx)\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
+                    "'([^']*)'",
+                  },
+                  {
+                    "(?:clsx|cva|cx)\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
+                    '"([^"]*)"',
+                  },
+                  {
+                    "(?:clsx|cva|cx)\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
+                    "`([^`]*)`",
+                  },
+                },
+              },
+            },
+          },
+        },
+        yamlls = {
+          -- capabilities = {
+          --   textDocument = {
+          --     completion = {
+          --       completionItem = {
+          --         snippetSupport = false,
+          --       },
+          --     },
+          --   },
+          -- },
+          settings = {
+            yaml = {
+              disableDefaultProperties = true,
+              -- disableAdditionalProperties = true,
+              format = {
+                singleQuote = true,
+              },
+              schemas = {
+                kubernetes = "k8s/**/*.yaml",
+              },
             },
           },
         },
@@ -115,22 +190,22 @@ return {
             diagnosticSeverity = "Hint",
           },
         },
-        emmet_language_server = {
-          showSuggestionsAsSnippets = true,
-          -- showAbbreviationSuggestions = true,
-          filetypes = {
-            "css",
-            "eruby",
-            "html",
-            "javascript",
-            "javascriptreact",
-            "less",
-            "sass",
-            "scss",
-            "pug",
-            "typescriptreact",
-          },
-        },
+        -- emmet_language_server = {
+        --   showSuggestionsAsSnippets = true,
+        --   -- showAbbreviationSuggestions = true,
+        --   filetypes = {
+        --     "css",
+        --     "eruby",
+        --     "html",
+        --     "javascript",
+        --     "javascriptreact",
+        --     "less",
+        --     "sass",
+        --     "scss",
+        --     "pug",
+        --     "typescriptreact",
+        --   },
+        -- },
       },
     },
   },
