@@ -39,7 +39,7 @@ vim.opt.shortmess:append("c")
 -- enable wrap by default
 vim.opt.wrap = true
 
--- vim.opt.cursorline = true
+vim.opt.cursorline = false
 -- vim.opt.cursorlineopt = "number"
 
 vim.g.autoformat = false
@@ -52,6 +52,9 @@ vim.opt.laststatus = 3
 
 -- in cmp, instead of inline suggestions
 vim.g.ai_cmp = true
+
+-- PERF: reduce the number of redraws
+vim.opt.relativenumber = false
 
 -- use my custom lazygit config
 vim.g.lazygit_config = false
@@ -66,10 +69,5 @@ vim.g.lazygit_config = false
 -- vim.g.lazyvim_ruby_formatter = "rubocop"
 -- vim.g.lazyvim_ruby_lsp = "solargraph"
 
-vim.g.snacks_animate = false
-
 -- Zig
 vim.g.zig_fmt_autosave = 0
-
--- Neovim fixes
-vim.hl = vim.highlight

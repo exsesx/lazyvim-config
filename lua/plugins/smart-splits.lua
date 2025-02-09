@@ -3,6 +3,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     -- NOTE: set lazy to false if any error occurs
     lazy = true,
+    disabled = true,
     event = "VeryLazy",
     keys = {
       {

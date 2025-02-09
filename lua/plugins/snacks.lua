@@ -22,25 +22,28 @@ return {
       end,
       desc = "Find Git Branches",
     },
-    {
-      "<leader>gs",
-      function()
-        Snacks.picker.git_status({
-          win = {
-            input = {
-              keys = {
-                -- ["<Tab>"] = { "git_stage", mode = { "n", "i" } },
-                ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
-                ["<Left>"] = { "git_stage", mode = { "n", "i" } },
-              },
-            },
-          },
-        })
-      end,
-      desc = "Git Status",
-    },
+    -- {
+    --   "<leader>gs",
+    --   function()
+    --     Snacks.picker.git_status({
+    --       win = {
+    --         input = {
+    --           keys = {
+    --             -- ["<Tab>"] = { "git_stage", mode = { "n", "i" } },
+    --             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
+    --             ["<Left>"] = { "git_stage", mode = { "n", "i" } },
+    --             ["<Right>"] = { "git_stage", mode = { "n", "i" } },
+    --           },
+    --         },
+    --       },
+    --     })
+    --   end,
+    --   desc = "Git Status",
+    -- },
   },
   opts = {
+    scroll = { enabled = false },
+    -- explorer = {},
     dashboard = {
       preset = {
         header = [[
@@ -66,15 +69,56 @@ return {
         -- stylua: ignore end
       },
     },
-
-    -- TODO: Enable after https://github.com/folke/snacks.nvim/discussions/464 is resolved
-    -- Also https://github.com/folke/snacks.nvim/discussions/337 is interesting discussion
-    -- indent = {}
-
+    scratch = {
+      win_by_ft = {
+        typescript = {
+          keys = {
+            ["source"] = {
+              "<cr>",
+              function(self)
+                vim.notify(
+                  vim.fn.system({ "bun", "run", vim.api.nvim_buf_get_name(self.buf) }),
+                  "info",
+                  {
+                    id = "typescript_scratch",
+                    title = "Scratch",
+                    opts = function(notif)
+                      notif.ft = "typescript"
+                    end,
+                  }
+                )
+              end,
+              desc = "Run buffer (bun)",
+              mode = { "n", "x" },
+            },
+          },
+        },
+      },
+    },
     picker = {
+      sources = {
+        explorer = {
+          win = {
+            input = {
+              keys = {
+                ["<Esc>"] = { "", desc = "skip", mode = { "n" } },
+              },
+            },
+            list = {
+              keys = {
+                ["<Esc>"] = { "", desc = "skip" },
+              },
+            },
+          },
+          layout = {
+            cycle = false,
+          },
+        },
+      },
       formatters = {
         file = {
           filename_first = true,
+          -- filename_only = true,
         },
       },
       -- layout = "telescope",

@@ -7,3 +7,4 @@ foo.*
 *.log
 data
 spell
+.DS_Store

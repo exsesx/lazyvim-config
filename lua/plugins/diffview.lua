@@ -47,8 +47,8 @@ return {
     -- https://github.com/sindrets/diffview.nvim/issues/302#issuecomment-1678397129
     {
       "<leader>gdd",
-      "<cmd>DiffviewClose<cr>",
-      desc = "Diffview Delete",
+      "<cmd>DiffviewOpen<cr>",
+      desc = "Diffview",
     },
     -- gdf and gdo inspired by https://www.reddit.com/r/neovim/comments/1f7jj15/comment/ll9ial8
     {

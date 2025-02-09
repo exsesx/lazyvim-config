@@ -84,9 +84,9 @@ return {
             "mode",
             separator = { left = "" },
             padding = { left = 0, right = 1 },
-            fmt = function(mode)
-              return vim.b["visual_multi"] and mode .. " - MULTI" or mode
-            end,
+            -- fmt = function(mode)
+            --   return vim.b["visual_multi"] and mode .. " - MULTI" or mode
+            -- end,
           },
         },
         -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua#L129
@@ -141,6 +141,7 @@ return {
   {
     "f-person/auto-dark-mode.nvim",
     lazy = true,
+    enabled = false,
     event = "VeryLazy",
     opts = {
       set_dark_mode = function()
@@ -164,12 +165,29 @@ return {
     opts = {
       flavour = "macchiato",
       transparent_background = true,
+      no_bold = true,
+      no_italic = true,
+      integrations = {
+        neogit = true,
+        diffview = true,
+        harpoon = true,
+        nvim_surround = true,
+      },
       custom_highlights = function(colors)
         return {
           ["@comment.note"] = { link = "TodoFgNote" },
           ["@comment.warning"] = { link = "TodoFgWarn" },
           ["@comment.todo"] = { link = "TodoFgTODO" },
           ["@comment.error"] = { link = "TodoFgFIX" },
+
+          -- HACK: Disabling bold for completion
+          -- https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/integrations/blink_cmp.lua
+
+          -- TODO: Works, but let's find a better way to override highlights
+          -- BlinkCmpLabelMatch = { fg = colors.text, style = {} },
+
+          -- HACK: Disable italic for cmdline icon
+          NoiceCmdlineIcon = { fg = colors.sky, style = {} },
         }
       end,
     },

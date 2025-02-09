@@ -1,6 +1,6 @@
-local map = vim.keymap.set
+-- local map = vim.keymap.set
 
-map("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })
+-- map("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })
 
 -- TODO: Update neo-tree somehow? Re-open if already opened, etc.
 -- NOTE: Conflicts with <leader>. for scratch files from @folke
