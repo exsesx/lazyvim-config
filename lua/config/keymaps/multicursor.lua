@@ -69,8 +69,7 @@ set("n", "<M-leftmouse>", mc.handleMouse, { desc = "Handle Cursor Addition With 
 set({ "n", "v" }, "<c-q>", mc.toggleCursor, { desc = "Toggle Main Cursor" })
 set({ "n", "v" }, "<leader>mt", mc.toggleCursor, { desc = "Toggle Main Cursor" })
 
--- FIXME: ideal is to have <Esc> default behavior, perhaps via remap = true or something
-set("n", "<Esc>", function()
+set("n", "<esc>", function()
   if not mc.cursorsEnabled() then
     mc.enableCursors()
   elseif mc.hasCursors() then
@@ -80,7 +79,7 @@ set("n", "<Esc>", function()
     LazyVim.cmp.actions.snippet_stop()
     return "<esc>"
   end
-end, { desc = "Escape: Enable, Clear, or Fallback" })
+end, { desc = "Escape: Enable, Clear, or Fallback", remap = true, expr = true })
 
 -- bring back cursors if you accidentally clear them
 set("n", "<leader>gv", mc.restoreCursors, { desc = "Restore Cleared Cursors" })

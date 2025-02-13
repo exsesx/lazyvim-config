@@ -6,5 +6,6 @@ return {
     render = "virtual",
     enable_tailwind = true,
     virtual_symbol_position = "inline",
+    exclude_filetypes = { "lazy" },
   },
 }

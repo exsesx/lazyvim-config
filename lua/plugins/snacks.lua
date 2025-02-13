@@ -1,3 +1,5 @@
+---@module "snacks"
+
 return {
   "snacks.nvim",
   keys = {
@@ -22,30 +24,15 @@ return {
       end,
       desc = "Find Git Branches",
     },
-    -- {
-    --   "<leader>gs",
-    --   function()
-    --     Snacks.picker.git_status({
-    --       win = {
-    --         input = {
-    --           keys = {
-    --             -- ["<Tab>"] = { "git_stage", mode = { "n", "i" } },
-    --             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
-    --             ["<Left>"] = { "git_stage", mode = { "n", "i" } },
-    --             ["<Right>"] = { "git_stage", mode = { "n", "i" } },
-    --           },
-    --         },
-    --       },
-    --     })
-    --   end,
-    --   desc = "Git Status",
-    -- },
   },
+  ---@type snacks.Config
   opts = {
     scroll = { enabled = false },
     -- explorer = {},
     dashboard = {
       preset = {
+        -- Cool ASCII project: https://itoa.hex.dance/
+        -- ASCII Art: https://patorjk.com/software/taag/#p=testall&c=lua&f=Doh&t=Neovim
         header = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
@@ -53,20 +40,6 @@ return {
 ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
-        -- Cool ASCII project: https://itoa.hex.dance/
-        -- ASCII Art: https://patorjk.com/software/taag/#p=testall&c=lua&f=Doh&t=Neovim
-        -- stylua: ignore start
-        --         header =
-        -- [[
-        --
-        --     _/      _/                                  _/
-        --    _/_/    _/    _/_/      _/_/    _/      _/      _/_/_/  _/_/
-        --   _/  _/  _/  _/_/_/_/  _/    _/  _/      _/  _/  _/    _/    _/
-        --  _/    _/_/  _/        _/    _/    _/  _/    _/  _/    _/    _/
-        -- _/      _/    _/_/_/    _/_/        _/      _/  _/    _/    _/
-        -- ]]
-        -- ,
-        -- stylua: ignore end
       },
     },
     scratch = {
@@ -118,14 +91,6 @@ return {
       formatters = {
         file = {
           filename_first = true,
-          -- filename_only = true,
-        },
-      },
-      -- layout = "telescope",
-      icons = {
-        ui = {
-          -- TODO: spacing is better, but inconsistent with other pickers (git branches, for example)
-          -- selected = " ● ",
         },
       },
       win = {

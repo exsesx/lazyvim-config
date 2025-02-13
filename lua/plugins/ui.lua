@@ -75,7 +75,7 @@ return {
         -- section_separators = { left = "", right = "" },
         -- section_separators = { left = " ", right = " " },
         component_separators = "",
-        theme = "auto",
+        theme = dark_colorscheme,
       })
 
       opts.sections = vim.tbl_deep_extend("force", opts.sections or {}, {
@@ -84,13 +84,11 @@ return {
             "mode",
             separator = { left = "" },
             padding = { left = 0, right = 1 },
-            -- fmt = function(mode)
-            --   return vim.b["visual_multi"] and mode .. " - MULTI" or mode
-            -- end,
           },
         },
         -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua#L129
         lualine_y = {
+          require("config.lualine.codecompanion"),
           {
             "filetype",
             colored = true,
@@ -163,7 +161,7 @@ return {
     priority = 1000,
     name = "catppuccin",
     opts = {
-      flavour = "macchiato",
+      flavour = "mocha",
       transparent_background = true,
       no_bold = true,
       no_italic = true,
@@ -180,14 +178,55 @@ return {
           ["@comment.todo"] = { link = "TodoFgTODO" },
           ["@comment.error"] = { link = "TodoFgFIX" },
 
-          -- HACK: Disabling bold for completion
-          -- https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/integrations/blink_cmp.lua
-
-          -- TODO: Works, but let's find a better way to override highlights
-          -- BlinkCmpLabelMatch = { fg = colors.text, style = {} },
-
           -- HACK: Disable italic for cmdline icon
           NoiceCmdlineIcon = { fg = colors.sky, style = {} },
+
+          -- NOTE: Avante integration (https://github.com/catppuccin/nvim/pull/825/files)
+          AvanteTitle = { bg = colors.lavender, fg = colors.base },
+          AvanteReversedTitle = { bg = colors.none, fg = colors.lavender },
+
+          AvanteSubtitle = { bg = colors.peach, fg = colors.base },
+          AvanteReversedSubtitle = { bg = colors.none, fg = colors.peach },
+
+          AvanteThirdTitle = { bg = colors.blue, fg = colors.base },
+          AvanteReversedThirdTitle = { bg = colors.none, fg = colors.blue },
+
+          AvanteInlineHint = { fg = colors.overlay0 },
+          AvantePopupHint = { fg = colors.overlay0 },
+          AvanteAnnotation = { fg = colors.overlay0 },
+          AvanteSuggestion = { fg = colors.overlay0 },
+
+          AvanteConflictCurrent = {
+            bg = colors.none,
+            fg = colors.green,
+          },
+          AvanteConflictCurrentLabel = {
+            bg = colors.none,
+            fg = colors.green,
+          },
+
+          AvanteConflictIncoming = {
+            bg = colors.none,
+            fg = colors.blue,
+          },
+          AvanteConflictIncomingLabel = {
+            bg = colors.none,
+            fg = colors.blue,
+          },
+
+          AvanteConflictAncestor = {
+            bg = colors.none,
+            fg = colors.teal,
+          },
+          AvanteConflictAncestorLabel = {
+            bg = colors.none,
+            fg = colors.teal,
+          },
+
+          AvanteToBeDeleted = {
+            bg = colors.none,
+            fg = colors.red,
+          },
         }
       end,
     },

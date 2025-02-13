@@ -1,5 +1,3 @@
--- NOTE: vim.g.ai_cmp is set in lua/config/options.lua
-
 return {
   {
     "Saghen/blink.cmp",
@@ -32,33 +30,68 @@ return {
         },
         ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
       },
-      -- fuzzy = {
-      --   sorts = {
-      --     function(a, b)
-      --       if a.source_name ~= "LSP" or b.source_name ~= "LSP" then
-      --         return
-      --       end
-      --       local name = vim.lsp.get_client_by_id(b.client_id).name
-      --       return name == "emmet_ls"
-      --     end,
-      --     "score",
-      --     "sort_text",
-      --   },
-      -- },
-      enabled = function()
-        return vim.bo.buftype ~= "prompt"
-          and vim.bo.filetype ~= "AvanteInput"
-          and vim.b.completion ~= false
-      end,
+      fuzzy = {
+        sorts = {
+          -- NOTE: Deprioritize Emmet Language Server
+          function(a, b)
+            if a.source_name ~= "LSP" or b.source_name ~= "LSP" then
+              return
+            end
+
+            local client_a = vim.lsp.get_client_by_id(a.client_id)
+            local client_b = vim.lsp.get_client_by_id(b.client_id)
+            if not client_a or not client_b then
+              return
+            end
+
+            local name_a = client_a.name
+            local name_b = client_b.name
+
+            if name_a == "emmet_language_server" and name_b ~= "emmet_language_server" then
+              return false
+            elseif name_a ~= "emmet_language_server" and name_b == "emmet_language_server" then
+              return true
+            else
+              return nil
+            end
+          end,
+          "score",
+          "sort_text",
+        },
+      },
       completion = {
         list = { selection = { preselect = true, auto_insert = false } },
         ghost_text = {
-          -- enabled = vim.g.ai_cmp,
+          enabled = vim.g.ai_cmp,
           -- NOTE: I don't like layout being shifted all over the place
-          enabled = false,
+          -- enabled = false,
         },
         menu = {
           border = "rounded",
+          draw = {
+            columns = {
+              { "kind_icon", "label", "label_description", gap = 1 },
+              { "kind", gap = 1 },
+            },
+            components = {
+              kind_icon = {
+                ellipsis = false,
+                text = function(ctx)
+                  if ctx.kind == "Copilot" then
+                    return " "
+                  end
+
+                  local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+
+                  return kind_icon
+                end,
+                -- highlight = function(ctx)
+                --   local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                --   return hl
+                -- end,
+              },
+            },
+          },
         },
         documentation = {
           window = {

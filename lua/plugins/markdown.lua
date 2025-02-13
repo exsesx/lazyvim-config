@@ -3,6 +3,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "norg", "rmd", "org", "Avante", "codecompanion" },
     opts = {
+      file_types = { "markdown", "norg", "rmd", "org" },
       code = {
         style = "language",
         border = "none",

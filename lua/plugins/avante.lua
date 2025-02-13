@@ -6,7 +6,6 @@ return {
     build = "make",
     opts = {
       provider = "copilot",
-      auto_suggestions_provider = "copilot",
       copilot = {
         model = "o3-mini",
         -- model = "claude-3.5-sonnet",
@@ -74,9 +73,17 @@ return {
       },
       {
         "MeanderingProgrammer/render-markdown.nvim",
-        optional = true,
         ft = function(_, ft)
           vim.list_extend(ft, { "Avante" })
+        end,
+        opts = function(_, opts)
+          opts.file_types = opts.file_types or {}
+
+          if not vim.tbl_contains(opts.file_types, "Avante") then
+            table.insert(opts.file_types, "Avante")
+          end
+
+          return opts
         end,
       },
     },

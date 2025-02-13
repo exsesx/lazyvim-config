@@ -7,14 +7,50 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    keys = {
+      {
+        "<leader>aE",
+        function()
+          local prompt = vim.fn.input("edit selected block:")
+
+          if prompt == "" then
+            return
+          end
+
+          vim.cmd("CodeCompanion " .. prompt)
+        end,
+        desc = "codecompanion: edit",
+        mode = { "v" },
+      },
+      {
+        "<leader>aA",
+        function()
+          require("codecompanion").chat()
+        end,
+        desc = "codecompanion: ask",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>aT",
+        function()
+          require("codecompanion").toggle()
+        end,
+        desc = "codecompanion: toggle",
+      },
+    },
     config = function()
       require("codecompanion").setup({
         display = {
           chat = {
+            icons = {
+              pinned_buffer = " ",
+              watched_buffer = " ",
+            },
             window = {
               border = "rounded",
               width = 0.3,
             },
+            intro_message = "Press ? for options",
           },
         },
         adapters = {
@@ -22,9 +58,7 @@ return {
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
-                  -- default = "o3-mini",
                   default = "claude-3.5-sonnet",
-                  -- default = "gpt-4o",
                 },
               },
             })
@@ -33,6 +67,16 @@ return {
         strategies = {
           chat = {
             adapter = "copilot",
+            slash_commands = {
+              ["file"] = {
+                callback = "strategies.chat.slash_commands.file",
+                description = "Select a file using Snacks",
+                opts = {
+                  provider = "snacks",
+                  contains_code = true,
+                },
+              },
+            },
           },
           inline = {
             adapter = "copilot",
