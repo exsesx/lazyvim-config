@@ -182,6 +182,7 @@ return {
           -- HACK: Disable italic for cmdline icon
           NoiceCmdlineIcon = { fg = colors.sky, style = {} },
 
+          -- TODO: Make it foldable
           -- NOTE: Avante integration (https://github.com/catppuccin/nvim/pull/825/files)
           AvanteTitle = { bg = colors.lavender, fg = colors.base },
           AvanteReversedTitle = { bg = colors.none, fg = colors.lavender },
@@ -227,6 +228,47 @@ return {
           AvanteToBeDeleted = {
             bg = colors.none,
             fg = colors.red,
+          },
+
+          -- NOTE: Neogit integration (https://github.com/catppuccin/nvim/blob/c1fcef5d7a6e8dd28392c3b04150b9c42b84a40e/lua/catppuccin/groups/integrations/neogit.lua)
+          NeogitDiffContext = {
+            bg = colors.none,
+          },
+          NeogitDiffContextHighlight = {
+            bg = colors.none,
+          },
+          NeogitDiffContextCursor = {
+            link = "CursorLine",
+          },
+          NeogitDiffDelete = {
+            bg = colors.none,
+          },
+          NeogitDiffDeleteHighlight = {
+            bg = colors.none,
+          },
+          NeogitDiffDeleteCursor = {
+            link = "CursorLine",
+          },
+          NeogitDiffAdd = {
+            bg = colors.none,
+          },
+          NeogitDiffAddHighlight = {
+            bg = colors.none,
+          },
+          NeogitDiffAddCursor = {
+            link = "CursorLine",
+          },
+          NeogitDiffHeader = {
+            bg = colors.none,
+          },
+          NeogitDiffHeaderHighlight = {
+            bg = colors.none,
+          },
+          NeogitDiffHunkHeader = {
+            bg = colors.none,
+          },
+          NeogitDiffHunkHeaderHighlight = {
+            bg = colors.none,
           },
         }
       end,

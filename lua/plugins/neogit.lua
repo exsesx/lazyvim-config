@@ -11,51 +11,31 @@ return {
 
       neogit.setup({
         use_default_keymaps = true,
-        disable_context_highlighting = false,
+        disable_context_highlighting = true,
+        process_spinner = true,
         graph_style = "kitty",
+        kind = "auto",
         integrations = {
           diffview = true,
-          fzf_lua = true,
+
+          -- https://github.com/NeogitOrg/neogit/pull/1654
+          snacks = true,
         },
-        commit_editor = {
-          show_staged_diff = false,
-          staged_diff_split_kind = "split",
+        -- commit_editor = {
+        --   show_staged_diff = false,
+        --   staged_diff_split_kind = "split",
+        -- },
+        signs = {
+          -- { CLOSED, OPENED }
+          hunk = { "", "" },
+          item = { "", "" },
+          section = { "", "" },
         },
       })
 
-      local function extend_highlight(group, opts)
-        local current_hl = vim.api.nvim_get_hl(0, { name = group })
-        local new_hl = vim.tbl_extend("force", current_hl, opts, { default = false })
-
-        vim.api.nvim_set_hl(0, group, new_hl)
-      end
-
-      -- TODO: WIP
-
-      -- FIXME: This won't change on the fly when colorscheme changes
-      -- NOTE: From tokyonight, but use link instead or something
-      -- idea is https://stackoverflow.com/questions/18774910/how-to-partially-link-highlighting-groups
-      local cursor_hl = vim.api.nvim_get_hl(0, { name = "CursorLine" })
-      local cursor_line_color = cursor_hl.bg
-
-      extend_highlight("NeogitDiffContext", { bg = "none" })
-      extend_highlight("NeogitDiffContextHighlight", { bg = "none" })
-      extend_highlight("NeogitDiffContextCursor", { bg = cursor_line_color })
-
-      extend_highlight("NeogitDiffDelete", { bg = "none" })
-      extend_highlight("NeogitDiffDeleteHighlight", { bg = "none" })
-      extend_highlight("NeogitDiffDeleteCursor", { bg = cursor_line_color })
-
-      extend_highlight("NeogitDiffAdd", { bg = "none" })
-      extend_highlight("NeogitDiffAddHighlight", { bg = "none" })
-      extend_highlight("NeogitDiffAddCursor", { bg = cursor_line_color })
-
-      extend_highlight("NeogitDiffHeader", { bg = "none" })
-      extend_highlight("NeogitDiffHeaderHighlight", { bg = "none" })
-
-      extend_highlight("NeogitHunkHeader", { bg = "none" })
-      extend_highlight("NeogitHunkHeaderHighlight", { bg = "none" })
-      -- extend_highlight("NeogitHunkHeaderCursor", { bg = "none" })
+      -- TODO: Can't set it from ui.lua for some reason
+      vim.api.nvim_set_hl(0, "NeogitDiffContext", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NeogitDiffContextHighlight", { bg = "none" })
     end,
   },
 }
