@@ -55,6 +55,7 @@ return {
               return nil
             end
           end,
+          -- "exact",
           "score",
           "sort_text",
         },
@@ -62,9 +63,8 @@ return {
       completion = {
         list = { selection = { preselect = true, auto_insert = false } },
         ghost_text = {
-          enabled = vim.g.ai_cmp,
-          -- NOTE: I don't like layout being shifted all over the place
-          -- enabled = false,
+          -- enabled = vim.g.ai_cmp,
+          enabled = false,
         },
         menu = {
           border = "rounded",

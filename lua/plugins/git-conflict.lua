@@ -3,6 +3,22 @@ return {
     "akinsho/git-conflict.nvim",
     event = "VeryLazy",
     enabled = false,
+    dependencies = {
+      {
+        "folke/which-key.nvim",
+        opts = {
+          spec = {
+            { "<leader>ch", group = "hunks/conflicts" },
+            { "<leader>cho", desc = "Choose ours", mode = "n" },
+            { "<leader>cht", desc = "Choose theirs", mode = "n" },
+            { "<leader>chb", desc = "Choose both", mode = "n" },
+            { "<leader>ch0", desc = "Choose none", mode = "n" },
+            { "]x", desc = "Move to next conflict", mode = "n" },
+            { "[x", desc = "Move to previous conflict", mode = "n" },
+          },
+        },
+      },
+    },
     config = function()
       local gc = require("git-conflict")
 
@@ -18,19 +34,5 @@ return {
         },
       })
     end,
-  },
-  {
-    "folke/which-key.nvim",
-    opts = {
-      spec = {
-        { "<leader>ch", group = "hunks/conflicts" },
-        { "<leader>cho", desc = "Choose ours", mode = "n" },
-        { "<leader>cht", desc = "Choose theirs", mode = "n" },
-        { "<leader>chb", desc = "Choose both", mode = "n" },
-        { "<leader>ch0", desc = "Choose none", mode = "n" },
-        { "]x", desc = "Move to next conflict", mode = "n" },
-        { "[x", desc = "Move to previous conflict", mode = "n" },
-      },
-    },
   },
 }

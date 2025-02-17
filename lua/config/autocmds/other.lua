@@ -35,18 +35,20 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- })
 
 -- NOTE: https://cmp.saghen.dev/recipes.html#hide-copilot-on-suggestion
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'BlinkCmpMenuOpen',
-  callback = function()
-    require("copilot.suggestion").dismiss()
-    vim.b.copilot_suggestion_hidden = true
-  end,
-})
+if not vim.g.ai_cmp then
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "BlinkCmpMenuOpen",
+    callback = function()
+      require("copilot.suggestion").dismiss()
+      vim.b.copilot_suggestion_hidden = true
+    end,
+  })
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'BlinkCmpMenuClose',
-  callback = function()
-    vim.b.copilot_suggestion_hidden = false
-    require("copilot.suggestion").next()
-  end,
-})
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "BlinkCmpMenuClose",
+    callback = function()
+      vim.b.copilot_suggestion_hidden = false
+      require("copilot.suggestion").next()
+    end,
+  })
+end

@@ -170,6 +170,7 @@ return {
         diffview = true,
         harpoon = true,
         nvim_surround = true,
+        gitgraph = true,
       },
       custom_highlights = function(colors)
         return {

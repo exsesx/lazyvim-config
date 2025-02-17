@@ -7,6 +7,7 @@ return {
     {
       "S",
       false,
+      mode = { "n", "x", "o" },
     },
   },
   ---@type Flash.Config

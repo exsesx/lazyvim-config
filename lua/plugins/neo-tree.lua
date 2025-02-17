@@ -31,6 +31,24 @@ return {
           icon.text, icon.highlight = require("mini.icons").get("lsp", node.extra.kind.name)
         end,
       },
+      -- TODO: WIP, Improve icons
+      modified = {
+        symbol = "󰷬",
+        highlight = "NeoTreeModified",
+      },
+      git_status = {
+        symbols = {
+          added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted = "✖", -- this can only be used in the git_status source
+          renamed = "󰁕", -- this can only be used in the git_status source
+          untracked = "",
+          ignored = " ",
+          unstaged = "󰄱",
+          staged = "󰱒",
+          conflict = "",
+        },
+      },
     },
     filesystem = {
       window = {
