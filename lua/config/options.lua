@@ -37,7 +37,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.shortmess:append("c")
 
 -- enable wrap by default
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.cursorline = false
 -- vim.opt.cursorlineopt = "number"

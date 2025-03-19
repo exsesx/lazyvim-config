@@ -7,8 +7,8 @@ return {
     opts = {
       provider = "copilot",
       copilot = {
-        model = "o3-mini",
-        -- model = "claude-3.5-sonnet",
+        -- model = "o3-mini",
+        model = "claude-3.7-sonnet",
         -- model = "gpt-4o",
 
         -- temperature = 0,
@@ -60,6 +60,9 @@ return {
         lazy = true,
         opts = {
           sources = {
+            per_filetype = {
+              AvanteInput = { "avante_commands", "avante_mentions", "avante_files" },
+            },
             default = { "avante_commands", "avante_mentions", "avante_files" },
             providers = {
               avante_commands = {

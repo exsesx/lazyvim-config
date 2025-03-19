@@ -27,6 +27,22 @@ return {
   },
   ---@type snacks.Config
   opts = {
+    indent = {
+      enabled = true,
+      scope = {
+        enabled = true,
+      },
+      chunk = {
+        enabled = false,
+        char = {
+          corner_top = "╭",
+          corner_bottom = "╰",
+          horizontal = "─",
+          vertical = "│",
+          arrow = "─",
+        },
+      },
+    },
     scroll = { enabled = false },
     -- explorer = {},
     dashboard = {
