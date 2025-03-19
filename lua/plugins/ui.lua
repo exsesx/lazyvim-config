@@ -1,5 +1,8 @@
 -- https://www.lazyvim.org/plugins/colorscheme
 
+---@module "tokyonight"
+---@module "catppuccin"
+
 local dark_colorscheme = "catppuccin-mocha"
 local light_colorscheme = "catppuccin-latte"
 
@@ -171,7 +174,12 @@ return {
         harpoon = true,
         nvim_surround = true,
         gitgraph = true,
+        avante = {
+          enabled = true,
+          windows_sidebar_header_rounded = true,
+        },
       },
+      ---@type CtpHighlightOverrideFn
       custom_highlights = function(colors)
         return {
           ["@comment.note"] = { link = "TodoFgNote" },
@@ -181,54 +189,6 @@ return {
 
           -- HACK: Disable italic for cmdline icon
           NoiceCmdlineIcon = { fg = colors.sky, style = {} },
-
-          -- TODO: Make it foldable
-          -- NOTE: Avante integration (https://github.com/catppuccin/nvim/pull/825/files)
-          AvanteTitle = { bg = colors.lavender, fg = colors.base },
-          AvanteReversedTitle = { bg = colors.none, fg = colors.lavender },
-
-          AvanteSubtitle = { bg = colors.peach, fg = colors.base },
-          AvanteReversedSubtitle = { bg = colors.none, fg = colors.peach },
-
-          AvanteThirdTitle = { bg = colors.blue, fg = colors.base },
-          AvanteReversedThirdTitle = { bg = colors.none, fg = colors.blue },
-
-          AvanteInlineHint = { fg = colors.overlay0 },
-          AvantePopupHint = { fg = colors.overlay0 },
-          AvanteAnnotation = { fg = colors.overlay0 },
-          AvanteSuggestion = { fg = colors.overlay0 },
-
-          AvanteConflictCurrent = {
-            bg = colors.none,
-            fg = colors.green,
-          },
-          AvanteConflictCurrentLabel = {
-            bg = colors.none,
-            fg = colors.green,
-          },
-
-          AvanteConflictIncoming = {
-            bg = colors.none,
-            fg = colors.blue,
-          },
-          AvanteConflictIncomingLabel = {
-            bg = colors.none,
-            fg = colors.blue,
-          },
-
-          AvanteConflictAncestor = {
-            bg = colors.none,
-            fg = colors.teal,
-          },
-          AvanteConflictAncestorLabel = {
-            bg = colors.none,
-            fg = colors.teal,
-          },
-
-          AvanteToBeDeleted = {
-            bg = colors.none,
-            fg = colors.red,
-          },
 
           -- NOTE: Neogit integration (https://github.com/catppuccin/nvim/blob/c1fcef5d7a6e8dd28392c3b04150b9c42b84a40e/lua/catppuccin/groups/integrations/neogit.lua)
           NeogitDiffContext = {
@@ -270,6 +230,28 @@ return {
           NeogitDiffHunkHeaderHighlight = {
             bg = colors.none,
           },
+
+          -- kitty-scrollback
+          KittyScrollbackNvimVisual = { link = "Visual" },
+          KittyScrollbackNvimPasteWinNormal = {},
+          KittyScrollbackNvimNormal = {},
+          KittyScrollbackNvimPasteWinFloatTitle = {},
+          KittyScrollbackNvimPasteWinFloatBorder = {},
+          KittyScrollbackNvimStatusWinNormal = {},
+          KittyScrollbackNvimStatusWinNvimIcon = {
+            bg = colors.none,
+            fg = colors.green,
+          },
+          KittyScrollbackNvimStatusWinHeartIcon = {
+            bg = colors.none,
+            fg = colors.red,
+          },
+          KittyScrollbackNvimStatusWinKittyIcon = {
+            bg = colors.none,
+            fg = colors.pink,
+          },
+          KittyScrollbackNvimStatusWinReadyIcon = {},
+          KittyScrollbackNvimStatusWinSpinnerIcon = {},
         }
       end,
     },

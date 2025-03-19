@@ -25,12 +25,13 @@ return {
         --   show_staged_diff = false,
         --   staged_diff_split_kind = "split",
         -- },
-        signs = {
-          -- { CLOSED, OPENED }
-          hunk = { "", "" },
-          item = { "", "" },
-          section = { "", "" },
-        },
+        -- TODO: Improve chevron icons
+        -- signs = {
+        --   -- { CLOSED, OPENED }
+        --   hunk = { "", "" },
+        --   item = { "", "" },
+        --   section = { "", "" },
+        -- },
       })
 
       -- TODO: Can't set it from ui.lua for some reason

@@ -32,10 +32,10 @@ return {
         end,
       },
       -- TODO: WIP, Improve icons
-      modified = {
-        symbol = "󰷬",
-        highlight = "NeoTreeModified",
-      },
+      -- modified = {
+      --   symbol = "󰷬",
+      --   highlight = "NeoTreeModified",
+      -- },
       git_status = {
         symbols = {
           added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
