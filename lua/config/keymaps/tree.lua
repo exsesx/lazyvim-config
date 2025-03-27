@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 -- local map = vim.keymap.set
 
 -- map("n", "<leader>o", "<Cmd>Neotree<CR>", { silent = true })

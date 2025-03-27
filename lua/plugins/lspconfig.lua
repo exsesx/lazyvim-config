@@ -1,19 +1,32 @@
 return {
   {
     "neovim/nvim-lspconfig",
-
-    -- NOTE: disables lazy loading
-    -- init = function()
-    --   require("lspconfig.ui.windows").default_options.border = "rounded"
-    -- end,
-
     opts = {
+      diagnostics = {
+        virtual_text = vim.g.virtual_text,
+        virtual_lines = vim.g.virtual_lines,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "",
+            [vim.diagnostic.severity.INFO] = "",
+          },
+          numhl = {
+            [vim.diagnostic.severity.WARN] = "WarningMsg",
+            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+            [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+            [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+          },
+        },
+      },
       setup = {
         tailwindcss = function(_, opts)
           local tw = LazyVim.lsp.get_raw_config("tailwindcss")
           opts.filetypes = opts.filetypes or {}
 
           -- Add default filetypes
+          ---@diagnostic disable-next-line: undefined-field
           vim.list_extend(opts.filetypes, tw.default_config.filetypes)
 
           -- Remove excluded filetypes

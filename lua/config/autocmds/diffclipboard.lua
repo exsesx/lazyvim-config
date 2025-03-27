@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local function create_scratch_buffer(lines, name, ft)
   local buf = vim.api.nvim_get_current_buf()
 

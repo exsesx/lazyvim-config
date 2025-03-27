@@ -5,7 +5,7 @@
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
-vim.opt.scrolloff = 13
+vim.opt.scrolloff = 10
 vim.opt.shell = "/opt/homebrew/bin/bash"
 
 vim.opt.formatoptions:remove("c")
@@ -27,9 +27,14 @@ vim.opt.listchars = {
 vim.opt.pumblend = 0
 vim.o.winblend = 0
 
+vim.g.virtual_text = false
+vim.g.virtual_lines = true
+
 -- add border to diagnostic window
 vim.diagnostic.config({
   float = { border = "rounded" },
+  virtual_text = vim.g.virtual_text,
+  virtual_lines = vim.g.virtual_lines,
 })
 
 -- completions
@@ -51,7 +56,7 @@ vim.opt.spell = false
 vim.opt.laststatus = 3
 
 -- in cmp, instead of inline suggestions
-vim.g.ai_cmp = true
+vim.g.ai_cmp = false
 
 -- PERF: reduce the number of redraws
 vim.opt.relativenumber = false
@@ -66,8 +71,12 @@ vim.g.lazygit_config = false
 
 -- Ruby
 -- vim.g.lazyvim_ruby_lsp = "ruby_lsp"
--- vim.g.lazyvim_ruby_formatter = "rubocop"
--- vim.g.lazyvim_ruby_lsp = "solargraph"
+vim.g.lazyvim_ruby_formatter = "rubocop"
+vim.g.lazyvim_ruby_lsp = "solargraph"
 
 -- Zig
 vim.g.zig_fmt_autosave = 0
+
+-- God bless Neovim 0.11
+-- NOTE: not yet, too much becomes rounded, even those that shouldn't
+-- vim.o.winborder = "rounded"

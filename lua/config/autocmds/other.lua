@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 -- do not add comment on the new line if the previous line is commented
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",

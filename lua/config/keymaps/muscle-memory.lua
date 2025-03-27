@@ -1,3 +1,8 @@
+-- NOTE: VS Code friendly muscle memory keymaps
+-- if vim.g.vscode then
+--   return
+-- end
+
 local map = vim.keymap.set
 local del = vim.keymap.del
 

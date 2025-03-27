@@ -14,7 +14,7 @@ return {
   opts = {
     modes = {
       char = {
-        autohide = true,
+        autohide = not vim.g.vscode,
       },
     },
   },

@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local map = vim.keymap.set
 
 -- NOTE: copy file reference path and paste

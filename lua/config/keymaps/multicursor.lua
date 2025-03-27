@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local mc = require("multicursor-nvim")
 -- HACK: plugin: ../../plugins/multicursor.lua
 

@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local Snacks = require("snacks")
 -- FIXME: disables lazy loading
 -- local copilot_exists = pcall(require, "copilot")
