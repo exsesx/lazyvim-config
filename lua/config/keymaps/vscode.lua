@@ -58,3 +58,7 @@ end)
 map("n", "<leader>lf", function()
   vscode.action("editor.action.formatDocument")
 end)
+
+map("n", "<leader>e", function()
+  vscode.action("workbench.view.explorer")
+end)

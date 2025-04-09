@@ -27,14 +27,16 @@ vim.opt.listchars = {
 vim.opt.pumblend = 0
 vim.o.winblend = 0
 
-vim.g.virtual_text = false
-vim.g.virtual_lines = true
+-- vim.g.diagnostics = {
+--   virtual_text = { current_line = true, severity = { min = "INFO", max = "WARN" } },
+--   virtual_lines = { current_line = true, severity = { min = "ERROR" } },
+-- }
 
 -- add border to diagnostic window
 vim.diagnostic.config({
   float = { border = "rounded" },
-  virtual_text = vim.g.virtual_text,
-  virtual_lines = vim.g.virtual_lines,
+  -- virtual_text = vim.g.diagnostics.virtual_text,
+  -- virtual_lines = vim.g.diagnostics.virtual_lines,
 })
 
 -- completions
@@ -56,7 +58,7 @@ vim.opt.spell = false
 vim.opt.laststatus = 3
 
 -- in cmp, instead of inline suggestions
-vim.g.ai_cmp = false
+vim.g.ai_cmp = true
 
 -- PERF: reduce the number of redraws
 vim.opt.relativenumber = false

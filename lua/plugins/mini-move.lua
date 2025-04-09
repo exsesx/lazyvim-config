@@ -14,8 +14,9 @@ return {
       -- line_left = "<A-S-Left>",
       -- line_right = "<A-S-Right>",
 
-      line_left = "<",
-      line_right = ">",
+      -- NOTE: messes with the default behavior of < and >
+      -- line_left = "<",
+      -- line_right = ">",
       line_down = "<A-S-Down>",
       line_up = "<A-S-Up>",
     },

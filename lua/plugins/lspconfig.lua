@@ -3,22 +3,22 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       diagnostics = {
-        virtual_text = vim.g.virtual_text,
-        virtual_lines = vim.g.virtual_lines,
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = "",
-            [vim.diagnostic.severity.WARN] = "",
-            [vim.diagnostic.severity.HINT] = "",
-            [vim.diagnostic.severity.INFO] = "",
-          },
-          numhl = {
-            [vim.diagnostic.severity.WARN] = "WarningMsg",
-            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-            [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
-            [vim.diagnostic.severity.HINT] = "DiagnosticHint",
-          },
-        },
+        -- virtual_text = vim.g.diagnostics.virtual_text,
+        -- virtual_lines = vim.g.diagnostics.virtual_lines,
+        -- signs = {
+        --   text = {
+        --     [vim.diagnostic.severity.ERROR] = "",
+        --     [vim.diagnostic.severity.WARN] = "",
+        --     [vim.diagnostic.severity.HINT] = "",
+        --     [vim.diagnostic.severity.INFO] = "",
+        --   },
+        --   numhl = {
+        --     [vim.diagnostic.severity.WARN] = "WarningMsg",
+        --     [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+        --     [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+        --     [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+        --   },
+        -- },
       },
       setup = {
         tailwindcss = function(_, opts)
