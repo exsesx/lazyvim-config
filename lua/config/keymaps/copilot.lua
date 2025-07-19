@@ -3,8 +3,9 @@ if vim.g.vscode then
 end
 
 local Snacks = require("snacks")
--- FIXME: disables lazy loading
--- local copilot_exists = pcall(require, "copilot")
+
+-- FIXME: Copilot LSP next edit suggestion stops working if disabled and enabled again
+-- Find a way to restart native copilot LSP
 
 -- if copilot_exists then
 Snacks.toggle({

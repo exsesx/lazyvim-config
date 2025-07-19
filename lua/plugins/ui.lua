@@ -203,6 +203,9 @@ return {
           enabled = true,
           windows_sidebar_header_rounded = true,
         },
+        blink_cmp = {
+          style = "bordered",
+        },
       },
       ---@type CtpHighlightOverrideFn
       custom_highlights = function(colors)
@@ -255,6 +258,9 @@ return {
           NeogitDiffHunkHeaderHighlight = {
             bg = colors.none,
           },
+
+          -- nvim-surround
+          NvimSurroundHighlight = { sp = colors.blue },
 
           -- kitty-scrollback
           KittyScrollbackNvimVisual = { link = "Visual" },

@@ -39,14 +39,14 @@ return {
       git_status = {
         symbols = {
           added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-          modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+          modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
           deleted = "✖", -- this can only be used in the git_status source
           renamed = "󰁕", -- this can only be used in the git_status source
-          untracked = "",
-          ignored = " ",
+          untracked = "",
+          ignored = " ",
           unstaged = "󰄱",
           staged = "󰱒",
-          conflict = "",
+          conflict = "",
         },
       },
     },
@@ -99,10 +99,53 @@ return {
           end)
         end,
 
-        open_visual = function(_, selected_nodes)
+        open_visual = function(state, selected_nodes)
+          if #selected_nodes == 0 then
+            return
+          end
+
+          -- Check what types of nodes we have
+          local has_files = false
+          local has_directories = false
+          local has_expanded_directory = false
+
           for _, node in ipairs(selected_nodes) do
             if node.type == "file" then
-              vim.cmd("edit " .. vim.fn.fnameescape(node.path))
+              has_files = true
+            elseif node.type == "directory" then
+              has_directories = true
+              if node:is_expanded() then
+                has_expanded_directory = true
+              end
+            end
+          end
+
+          -- If we have any directories (regardless of files)
+          if has_directories then
+            -- If any directory is expanded, collapse all directories
+            if has_expanded_directory then
+              for _, node in ipairs(selected_nodes) do
+                if node.type == "directory" and node:is_expanded() then
+                  node:collapse()
+                end
+              end
+            else
+              -- If all directories are collapsed, expand all
+              for _, node in ipairs(selected_nodes) do
+                if node.type == "directory" and not node:is_expanded() then
+                  node:expand()
+                end
+              end
+            end
+            -- Refresh the tree to show the changes
+            require("neo-tree.sources.manager").refresh(state.name)
+
+          -- If only files, open them for editing
+          elseif has_files then
+            for _, node in ipairs(selected_nodes) do
+              if node.type == "file" then
+                vim.cmd("edit " .. vim.fn.fnameescape(node.path))
+              end
             end
           end
         end,

@@ -33,3 +33,6 @@ map("n", "yc", "yygccp", { desc = "Duplicate a line and comment out the first li
 -- inspired by helix, tbh
 map({ "n", "x" }, "gl", "$", { remap = true, desc = "Go to last character of the line" })
 map({ "n", "x" }, "gh", "^", { remap = true, desc = "Go to first character of the line" })
+
+map({ "n" }, "p", "p=]`", { desc = "Paste and format" })
+map({ "n" }, "P", "P=]`", { desc = "Paste and format" })

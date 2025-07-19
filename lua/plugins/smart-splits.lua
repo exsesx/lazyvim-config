@@ -1,6 +1,7 @@
 return {
   {
     "mrjones2014/smart-splits.nvim",
+    enabled = false,
     lazy = false,
     -- kitty support
     build = "./kitty/install-kittens.bash",

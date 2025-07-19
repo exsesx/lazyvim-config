@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- })
 
 -- NOTE: https://cmp.saghen.dev/recipes.html#hide-copilot-on-suggestion
-if not vim.g.ai_cmp then
+if vim.g.ai and not vim.g.ai_cmp then
   vim.api.nvim_create_autocmd("User", {
     pattern = "BlinkCmpMenuOpen",
     callback = function()

@@ -62,3 +62,11 @@ end)
 map("n", "<leader>e", function()
   vscode.action("workbench.view.explorer")
 end)
+
+map("n", "<leader>ss", function()
+  vscode.action("workbench.action.gotoSymbol")
+end)
+
+map("n", "<leader>sS", function()
+  vscode.action("workbench.action.showAllSymbols")
+end)

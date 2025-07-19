@@ -1,19 +1,22 @@
 return {
   {
     "yetone/avante.nvim",
-    lazy = true,
+    lazy = false,
+    enabled = false,
     event = "VeryLazy",
     build = "make",
     opts = {
       provider = "copilot",
-      copilot = {
-        -- model = "o3-mini",
-        model = "claude-3.7-sonnet",
-        -- model = "gpt-4o",
+      providers = {
+        copilot = {
+          -- model = "o3-mini",
+          model = "gemini-2.5-pro",
+          -- model = "gpt-4o",
 
-        -- temperature = 0,
-        -- max_tokens = 8192,
-        -- max_tokens = 4096,
+          -- temperature = 0,
+          -- max_tokens = 8192,
+          -- max_tokens = 4096,
+        },
       },
       hints = { enabled = false },
       file_selector = {

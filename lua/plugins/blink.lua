@@ -1,15 +1,15 @@
 return {
-  { import = "lazyvim.plugins.extras.ai.copilot" },
-  {
-    "giuxtaposition/blink-cmp-copilot",
-    enabled = false,
-  },
+  -- { import = "lazyvim.plugins.extras.ai.copilot" },
+  -- {
+  --   "giuxtaposition/blink-cmp-copilot",
+  --   enabled = false,
+  -- },
   {
     "Saghen/blink.cmp",
     -- https://github.com/LazyVim/LazyVim/pull/5551 - new copilot module
-    dependencies = {
-      "fang2hou/blink-copilot",
-    },
+    -- dependencies = {
+    --   "fang2hou/blink-copilot",
+    -- },
     opts = {
       sources = {
         -- TODO: https://github.com/kristijanhusak/vim-dadbod-completion/commit/1de1216
@@ -17,15 +17,26 @@ return {
         per_filetype = {
           sql = { "snippets", "dadbod", "buffer" },
         },
-        providers = {
-          copilot = {
-            module = "blink-copilot",
-          },
-        },
+        -- providers = {
+        --   copilot = {
+        --     module = "blink-copilot",
+        --   },
+        -- },
       },
       keymap = {
         preset = "enter",
         ["<Tab>"] = {
+          -- function(cmp)
+          --   if vim.b[vim.api.nvim_get_current_buf()].nes_state then
+          --     cmp.hide()
+          --     return (
+          --       require("copilot-lsp.nes").apply_pending_nes()
+          --       and require("copilot-lsp.nes").walk_cursor_end_edit()
+          --     )
+          --   end
+          --
+          --   return false
+          -- end,
           LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
           function(cmp)
             -- NOTE: Inspired by - https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#confirm-candidate-on-tab-immediately-when-theres-only-one-completion-entry
@@ -109,10 +120,10 @@ return {
 
                   return kind_icon
                 end,
-                -- highlight = function(ctx)
-                --   local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-                --   return hl
-                -- end,
+                highlight = function(ctx)
+                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return hl
+                end,
               },
             },
           },
