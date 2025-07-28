@@ -52,6 +52,8 @@ vim.opt.cursorline = false
 vim.g.autoformat = false
 -- vim.g.lazyvim_eslint_auto_format = false
 
+vim.g.snacks_animate = false
+
 vim.opt.swapfile = false
 vim.opt.spell = false
 

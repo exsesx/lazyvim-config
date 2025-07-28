@@ -3,6 +3,7 @@ if vim.g.vscode then
 end
 
 local map = vim.keymap.set
+local del = vim.keymap.del
 
 -- From NvChad
 -- NOTE: ";" is used for next
@@ -34,5 +35,22 @@ map("n", "yc", "yygccp", { desc = "Duplicate a line and comment out the first li
 map({ "n", "x" }, "gl", "$", { remap = true, desc = "Go to last character of the line" })
 map({ "n", "x" }, "gh", "^", { remap = true, desc = "Go to first character of the line" })
 
-map({ "n" }, "p", "p=]`", { desc = "Paste and format" })
-map({ "n" }, "P", "P=]`", { desc = "Paste and format" })
+map("n", "]p", "]p`[=`]", { desc = "Paste after and format" })
+map("n", "[p", "[p`[=`]", { desc = "Paste before and format" })
+
+map("x", "]p", "p`[=`]`[", { desc = "Replace selection and format" })
+map("x", "[p", "P`[=`]`[", { desc = "Replace selection and format" })
+
+-- Replace selection and format without overwriting the clipboard
+map("x", "<leader>p", '"_dP`[=`]`[', { desc = "Replace selection and format" })
+map("x", "<leader>P", '"_dP`[=`]`[', { desc = "Replace selection and format" })
+
+-- Delete visual selection without overwriting the clipboard
+map("x", "<leader>d", '"_d', { desc = "Delete selection" })
+
+-- Change visual selection without overwriting the clipboard
+map("x", "<leader>c", '"_c', { desc = "Change selection" })
+
+-- remove debug -> eval
+-- https://github.com/LazyVim/LazyVim/blob/25abbf546d564dc484cf903804661ba12de45507/lua/lazyvim/plugins/extras/dap/core.lua#L87
+del("v", "<leader>de")

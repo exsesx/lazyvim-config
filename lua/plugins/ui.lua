@@ -73,10 +73,10 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       opts.options = vim.tbl_deep_extend("force", opts.options or {}, {
-        section_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
         -- Uncomment and modify the line below to use different separators
         -- section_separators = { left = "", right = "" },
-        -- section_separators = { left = " ", right = " " },
+        section_separators = { left = " ", right = " " },
         component_separators = "",
         theme = dark_colorscheme,
       })
@@ -85,8 +85,8 @@ return {
         lualine_a = {
           {
             "mode",
-            separator = { left = "" },
-            padding = { left = 0, right = 1 },
+            -- separator = { left = "" },
+            padding = { left = 1, right = 1 },
           },
         },
         -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua#L129
@@ -106,8 +106,8 @@ return {
         lualine_z = {
           {
             "location",
-            separator = { right = "" },
-            padding = { left = 1, right = 0 },
+            -- separator = { right = "" },
+            padding = { left = 1, right = 1 },
           },
         },
       })
@@ -205,6 +205,10 @@ return {
         },
         blink_cmp = {
           style = "bordered",
+        },
+        snacks = {
+          enabled = true,
+          picker_style = "nvchad_outlined",
         },
       },
       ---@type CtpHighlightOverrideFn

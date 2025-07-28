@@ -85,6 +85,9 @@ return {
       },
     },
     picker = {
+      layout = {
+        fullscreen = false,
+      },
       sources = {
         explorer = {
           win = {
@@ -101,6 +104,7 @@ return {
           },
           layout = {
             cycle = false,
+            fullscreen = false,
           },
         },
       },
