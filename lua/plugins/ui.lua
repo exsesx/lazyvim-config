@@ -85,8 +85,8 @@ return {
         lualine_a = {
           {
             "mode",
-            -- separator = { left = "" },
-            padding = { left = 1, right = 1 },
+            separator = { left = "" },
+            padding = { left = 0, right = 1 },
           },
         },
         -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua#L129
@@ -106,8 +106,8 @@ return {
         lualine_z = {
           {
             "location",
-            -- separator = { right = "" },
-            padding = { left = 1, right = 1 },
+            separator = { right = "" },
+            padding = { left = 1, right = 0 },
           },
         },
       })
@@ -117,32 +117,7 @@ return {
         table.remove(opts.sections.lualine_c, #opts.sections.lualine_c)
       end
 
-      -- NOTE: Remove when https://github.com/LazyVim/LazyVim/pull/5900 is merged
-      -- opts.sections.lualine_x[2] = LazyVim.lualine.status(
-      --   LazyVim.config.icons.kinds.Copilot,
-      --   function()
-      --     local clients = package.loaded["copilot"]
-      --         and LazyVim.lsp.get_clients({ name = "copilot", bufnr = 0 })
-      --       or {}
-      --     if #clients > 0 then
-      --       local status = require("copilot.status").data.status
-      --       return (status == "InProgress" and "pending")
-      --         or (status == "Warning" and "error")
-      --         or "ok"
-      --     end
-      --   end
-      -- )
-
       return opts
-    end,
-  },
-
-  -- NOTE: Remove when https://github.com/LazyVim/LazyVim/pull/5900 is merged
-  {
-    "zbirenbaum/copilot.lua",
-    optional = true,
-    opts = function()
-      require("copilot.api").status = require("copilot.status")
     end,
   },
 
@@ -188,6 +163,14 @@ return {
     lazy = false,
     priority = 1000,
     name = "catppuccin",
+    -- init = function()
+    --   -- https://github.com/LazyVim/LazyVim/issues/6355
+    --   local ok, mod = pcall(require, "catppuccin.groups.integrations.bufferline")
+    --
+    --   if ok and mod and not mod.get and type(mod.get_theme) == "function" then
+    --     mod.get = mod.get_theme
+    --   end
+    -- end,
     opts = {
       flavour = "mocha",
       transparent_background = true,
@@ -208,7 +191,6 @@ return {
         },
         snacks = {
           enabled = true,
-          picker_style = "nvchad_outlined",
         },
       },
       ---@type CtpHighlightOverrideFn
@@ -261,6 +243,20 @@ return {
           },
           NeogitDiffHunkHeaderHighlight = {
             bg = colors.none,
+          },
+
+          NormalFloat = {
+            bg = colors.none,
+          },
+          FloatBorder = {
+            bg = colors.none,
+          },
+          FloatTitle = {
+            bg = colors.none,
+          },
+
+          TreesitterContextBottom = {
+            sp = colors.base,
           },
 
           -- nvim-surround

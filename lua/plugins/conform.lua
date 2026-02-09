@@ -17,6 +17,8 @@ return {
     },
     formatters_by_ft = {
       zig = { "zigfmt" },
+      -- FIXME: not ready yet, breaks files
+      -- nu = { "nufmt" },
     },
   },
 }

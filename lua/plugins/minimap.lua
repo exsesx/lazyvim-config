@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.map",
+    "nvim-mini/mini.map",
     event = "VeryLazy",
     enabled = false,
     config = function()

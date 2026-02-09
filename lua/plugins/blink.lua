@@ -37,7 +37,10 @@ return {
           --
           --   return false
           -- end,
-          LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
+          LazyVim.cmp.map({ "snippet_forward" }),
+          function()
+            return require("sidekick").nes_jump_or_apply()
+          end,
           function(cmp)
             -- NOTE: Inspired by - https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#confirm-candidate-on-tab-immediately-when-theres-only-one-completion-entry
             local completion_list = require("blink.cmp.completion.list")

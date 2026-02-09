@@ -8,6 +8,6 @@ return {
       watch_for_changes = true,
       delete_to_trash = true,
     },
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   },
 }
