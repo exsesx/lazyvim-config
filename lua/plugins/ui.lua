@@ -117,6 +117,28 @@ return {
         table.remove(opts.sections.lualine_c, #opts.sections.lualine_c)
       end
 
+      -- Replace "neo-tree" string extension with custom table to apply separators
+      for i, ext in ipairs(opts.extensions or {}) do
+        if ext == "neo-tree" then
+          local neo_tree_ext = require("lualine.extensions.neo-tree")
+
+          opts.extensions[i] = {
+            sections = {
+              lualine_a = {
+                {
+                  neo_tree_ext.sections.lualine_a[1],
+                  separator = { left = "" },
+                  padding = { left = 0, right = 1 },
+                },
+              },
+            },
+            filetypes = neo_tree_ext.filetypes,
+          }
+
+          break
+        end
+      end
+
       return opts
     end,
   },
