@@ -2,6 +2,7 @@ return {
   "ThePrimeagen/99",
   -- lazy = false,
   event = "VeryLazy",
+  enabled = false,
   keys = {
     {
       "<leader>9v",

@@ -1,42 +1,17 @@
 return {
-  -- { import = "lazyvim.plugins.extras.ai.copilot" },
-  -- {
-  --   "giuxtaposition/blink-cmp-copilot",
-  --   enabled = false,
-  -- },
   {
     "Saghen/blink.cmp",
-    -- https://github.com/LazyVim/LazyVim/pull/5551 - new copilot module
-    -- dependencies = {
-    --   "fang2hou/blink-copilot",
-    -- },
     opts = {
-      sources = {
-        -- TODO: https://github.com/kristijanhusak/vim-dadbod-completion/commit/1de1216
-        -- SQL extra doesn't reflect that yet
-        per_filetype = {
-          sql = { "snippets", "dadbod", "buffer" },
-        },
-        -- providers = {
-        --   copilot = {
-        --     module = "blink-copilot",
-        --   },
-        -- },
-      },
+      -- sources = {
+      --   -- TODO: https://github.com/kristijanhusak/vim-dadbod-completion/commit/1de1216
+      --   -- SQL extra doesn't reflect that yet
+      --   per_filetype = {
+      --     sql = { "snippets", "dadbod", "buffer" },
+      --   },
+      -- },
       keymap = {
         preset = "enter",
         ["<Tab>"] = {
-          -- function(cmp)
-          --   if vim.b[vim.api.nvim_get_current_buf()].nes_state then
-          --     cmp.hide()
-          --     return (
-          --       require("copilot-lsp.nes").apply_pending_nes()
-          --       and require("copilot-lsp.nes").walk_cursor_end_edit()
-          --     )
-          --   end
-          --
-          --   return false
-          -- end,
           LazyVim.cmp.map({ "snippet_forward" }),
           function()
             return require("sidekick").nes_jump_or_apply()
@@ -100,10 +75,10 @@ return {
           range = "prefix",
         },
         list = { selection = { preselect = true, auto_insert = false } },
-        ghost_text = {
-          -- enabled = vim.g.ai_cmp,
-          enabled = false,
-        },
+        -- ghost_text = {
+        --   -- enabled = vim.g.ai_cmp,
+        --   enabled = false,
+        -- },
         menu = {
           border = "rounded",
           draw = {
