@@ -67,6 +67,8 @@ map("n", "<leader>xo", function()
 end, { noremap = true, desc = "Go to location in clipboard" })
 
 local function copy_path_picker()
+  local line = vim.fn.line(".")
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
   local opts = {
     "Absolute path with line number",
     "Absolute path without line number",
@@ -74,11 +76,13 @@ local function copy_path_picker()
     "Relative path without line number",
   }
   vim.ui.select(opts, { prompt = "Select copy path option:" }, function(choice)
+    vim.schedule(function()
+      vim.api.nvim_win_set_cursor(0, cursor_pos)
+    end)
     if not choice then
       return
     end
     local file, text
-    local line = vim.fn.line(".")
     if choice == opts[1] then
       file = vim.fn.expand("%:p")
       text = file .. ":" .. line
@@ -104,6 +108,7 @@ end
 local function copy_path_picker_visual()
   local start_line = vim.fn.line("'<")
   local end_line = vim.fn.line("'>")
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
   local opts = {
     "Absolute path with line range",
     "Absolute path without line range",
@@ -111,6 +116,9 @@ local function copy_path_picker_visual()
     "Relative path without line range",
   }
   vim.ui.select(opts, { prompt = "Select copy path option:" }, function(choice)
+    vim.schedule(function()
+      vim.api.nvim_win_set_cursor(0, cursor_pos)
+    end)
     if not choice then
       return
     end

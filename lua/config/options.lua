@@ -6,7 +6,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
 vim.opt.scrolloff = 10
-vim.opt.shell = "/opt/homebrew/bin/bash"
+-- improved speed with bash
+-- but let's see if that's true now, since my fish is fast now
+-- vim.opt.shell = "/opt/homebrew/bin/bash"
 
 vim.opt.formatoptions:remove("c")
 vim.opt.formatoptions:remove("r")
