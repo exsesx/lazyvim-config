@@ -30,7 +30,7 @@ return {
         return vim.g.visual_whitespace_enabled
       end,
       set = function(state)
-        vim.g.visual_whitespace_enabled = not state
+        vim.g.visual_whitespace_enabled = state
         require("visual-whitespace").toggle()
       end,
     }):map("<leader>uv")

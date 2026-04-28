@@ -1,7 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
----@diagnostic disable-next-line: undefined-field
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   -- bootstrap lazy.nvim
   -- stylua: ignore
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
@@ -40,7 +39,6 @@ require("lazy").setup({
         -- "matchparen",
         "netrwPlugin",
         "tarPlugin",
-        "tohtml",
         "tutor",
         "zipPlugin",
       },

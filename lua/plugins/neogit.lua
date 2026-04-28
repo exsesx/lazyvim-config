@@ -33,10 +33,6 @@ return {
         --   section = { "", "" },
         -- },
       })
-
-      -- TODO: Can't set it from ui.lua for some reason
-      vim.api.nvim_set_hl(0, "NeogitDiffContext", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NeogitDiffContextHighlight", { bg = "none" })
     end,
   },
 }

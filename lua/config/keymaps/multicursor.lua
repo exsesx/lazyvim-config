@@ -94,6 +94,7 @@ set("n", "<leader>ma", mc.alignCursors, { desc = "Align Cursor Columns" })
 -- Append/insert for each line of visual selections.
 set("v", "I", mc.insertVisual, { desc = "Insert at Start of Visual Selection" })
 set("v", "A", mc.appendVisual, { desc = "Append at End of Visual Selection" })
+set("v", "<C-n>", mc.visualToCursors, { desc = "Visual to Cursors" })
 
 -- match new cursors within visual selections by regex.
 set("v", "M", mc.matchCursors, { desc = "Match Additional Cursors in Visual Selection" })

@@ -2,7 +2,7 @@ return {
   -- NOTE: https://github.com/sindrets/diffview.nvim
 
   "sindrets/diffview.nvim",
-  event = "VeryLazy",
+  cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   opts = function()
     local actions = require("diffview.actions")
 
@@ -60,7 +60,7 @@ return {
           return
         end
 
-        vim.cmd("DiffviewFileHistory" .. user_input)
+        vim.cmd("DiffviewFileHistory " .. user_input)
       end,
       desc = "Diffview File History",
     },

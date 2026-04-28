@@ -4,4 +4,4 @@ end
 
 local map = vim.keymap.set
 
-map("n", "<leader>uu", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
+map("n", "<leader>uu", "<CMD>Undotree<CR>", { desc = "Toggle Undotree" })

@@ -57,7 +57,7 @@ return {
           ["D"] = "trash",
           ["L"] = {
             function(state)
-              vim.fn.system({ "qlmanage", "-p", vim.fn.fnameescape(state.tree:get_node().path) })
+              vim.fn.system({ "qlmanage", "-p", state.tree:get_node().path })
             end,
             desc = "Quick Look",
           },
@@ -77,7 +77,7 @@ return {
               return
             end
 
-            vim.fn.system({ "trash", vim.fn.fnameescape(path) })
+            vim.fn.system({ "trash", path })
 
             require("neo-tree.sources.manager").refresh(state.name)
           end)
@@ -92,7 +92,7 @@ return {
               return
             end
             for _, node in ipairs(selected_nodes) do
-              vim.fn.system({ "trash", vim.fn.fnameescape(node.path) })
+              vim.fn.system({ "trash", node.path })
             end
 
             require("neo-tree.sources.manager").refresh(state.name)

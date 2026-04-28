@@ -10,10 +10,6 @@ vim.opt.scrolloff = 10
 -- but let's see if that's true now, since my fish is fast now
 -- vim.opt.shell = "/opt/homebrew/bin/bash"
 
-vim.opt.formatoptions:remove("c")
-vim.opt.formatoptions:remove("r")
-vim.opt.formatoptions:remove("o")
-
 -- hide invisible characters (tabs, etc.)
 vim.opt.list = false
 
@@ -25,7 +21,12 @@ vim.opt.listchars = {
   nbsp = "○", -- Non-breaking space
 }
 
--- fix nvim-cmp transparency
+-- 0.12 built-in LSP features
+vim.lsp.document_color.enable(true, { style = "virtual" })
+vim.lsp.linked_editing_range.enable()
+-- vim.lsp.on_type_formatting.enable()
+
+-- disable popup/float transparency
 vim.opt.pumblend = 0
 vim.o.winblend = 0
 
@@ -42,7 +43,7 @@ vim.diagnostic.config({
 })
 
 -- completions
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noselect", "nearest" }
 vim.opt.shortmess:append("c")
 
 -- enable wrap by default
@@ -55,6 +56,8 @@ vim.g.autoformat = false
 -- vim.g.lazyvim_eslint_auto_format = false
 
 vim.g.snacks_animate = false
+
+vim.opt.diffopt:append("inline:word")
 
 vim.opt.swapfile = false
 vim.opt.spell = false

@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 -- HACK: Disable bashls diagnostics for .env files
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = ".env",
+  pattern = { ".env", ".env.*" },
   callback = function(args)
     vim.diagnostic.enable(false, { bufnr = args.buf })
   end,
@@ -38,21 +38,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --   end,
 -- })
 
--- NOTE: https://cmp.saghen.dev/recipes.html#hide-copilot-on-suggestion
-if vim.g.ai and not vim.g.ai_cmp then
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "BlinkCmpMenuOpen",
-    callback = function()
-      require("copilot.suggestion").dismiss()
-      vim.b.copilot_suggestion_hidden = true
-    end,
-  })
-
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "BlinkCmpMenuClose",
-    callback = function()
-      vim.b.copilot_suggestion_hidden = false
-      require("copilot.suggestion").next()
-    end,
-  })
-end

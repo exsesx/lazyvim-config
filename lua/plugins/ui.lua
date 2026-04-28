@@ -4,7 +4,6 @@
 ---@module "catppuccin"
 
 local dark_colorscheme = "catppuccin-mocha"
-local light_colorscheme = "catppuccin-latte"
 
 return {
   {
@@ -91,7 +90,6 @@ return {
         },
         -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua#L129
         lualine_y = {
-          require("config.lualine.codecompanion"),
           {
             "filetype",
             colored = true,
@@ -162,25 +160,6 @@ return {
   },
 
   {
-    "f-person/auto-dark-mode.nvim",
-    lazy = true,
-    enabled = false,
-    event = "VeryLazy",
-    opts = {
-      set_dark_mode = function()
-        vim.api.nvim_set_option_value("background", "dark", {})
-        vim.api.nvim_command("colorscheme " .. dark_colorscheme)
-      end,
-      set_light_mode = function()
-        vim.api.nvim_set_option_value("background", "light", {})
-        vim.api.nvim_command("colorscheme " .. light_colorscheme)
-      end,
-      update_interval = 3000,
-      fallback = "dark",
-    },
-  },
-
-  {
     "catppuccin/nvim",
     lazy = false,
     priority = 1000,
@@ -204,10 +183,6 @@ return {
         harpoon = true,
         nvim_surround = true,
         gitgraph = true,
-        avante = {
-          enabled = true,
-          windows_sidebar_header_rounded = true,
-        },
         blink_cmp = {
           style = "bordered",
         },
@@ -283,28 +258,6 @@ return {
 
           -- nvim-surround
           NvimSurroundHighlight = { sp = colors.blue },
-
-          -- kitty-scrollback
-          KittyScrollbackNvimVisual = { link = "Visual" },
-          KittyScrollbackNvimPasteWinNormal = {},
-          KittyScrollbackNvimNormal = {},
-          KittyScrollbackNvimPasteWinFloatTitle = {},
-          KittyScrollbackNvimPasteWinFloatBorder = {},
-          KittyScrollbackNvimStatusWinNormal = {},
-          KittyScrollbackNvimStatusWinNvimIcon = {
-            bg = colors.none,
-            fg = colors.green,
-          },
-          KittyScrollbackNvimStatusWinHeartIcon = {
-            bg = colors.none,
-            fg = colors.red,
-          },
-          KittyScrollbackNvimStatusWinKittyIcon = {
-            bg = colors.none,
-            fg = colors.pink,
-          },
-          KittyScrollbackNvimStatusWinReadyIcon = {},
-          KittyScrollbackNvimStatusWinSpinnerIcon = {},
         }
       end,
     },

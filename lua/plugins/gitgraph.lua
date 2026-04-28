@@ -1,7 +1,6 @@
 return {
   {
     "isakbm/gitgraph.nvim",
-    event = "VeryLazy",
     lazy = true,
     opts = {
       symbols = {
