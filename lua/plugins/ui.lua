@@ -256,6 +256,12 @@ return {
             sp = colors.base,
           },
 
+          MatchParen = {
+            bg = colors.none,
+            fg = colors.peach,
+            style = { "bold" },
+          },
+
           -- nvim-surround
           NvimSurroundHighlight = { sp = colors.blue },
         }
