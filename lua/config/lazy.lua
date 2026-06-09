@@ -27,6 +27,7 @@ require("lazy").setup({
     },
   },
   install = { colorscheme = { "catppuccin" } },
+  concurrency = 16,
   checker = { enabled = false, notify = false },
   change_detection = {
     notify = false,
